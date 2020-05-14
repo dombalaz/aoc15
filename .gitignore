@@ -1,0 +1,11 @@
+# Object files
+*.o
+
+# Executables
+*.out
+
+# Build directory
+build/*
+
+# Vim swap files
+*.swp
