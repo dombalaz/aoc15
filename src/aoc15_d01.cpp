@@ -3,11 +3,13 @@
 #include <fstream>
 #include <iostream>
 
-auto constexpr printName {"aoc15_d01: "};
+auto constexpr printName{"aoc15_d01: "};
 
 void printHelp();
 
 void solveTaskOne(const std::string &in);
+
+void solveTaskTwo(const std::string &in);
 
 int main(int argc, char **argv)
 {
@@ -25,6 +27,7 @@ int main(int argc, char **argv)
     f.close();
 
     solveTaskOne(l);
+    solveTaskTwo(l);
     return EXIT_SUCCESS;
 }
 
@@ -40,6 +43,12 @@ void printHelp()
 
 void solveTaskOne(const std::string &in)
 {
-    std::cout << printName << "Solution to day one, task one, is "
+    std::cout << printName << "Solution to day one task one is "
         << getFloor(in) << "." << std::endl;
+}
+
+void solveTaskTwo(const std::string &in)
+{
+    std::cout << printName << "Solution to day one task one is " 
+        << getIndexOfFirstBasement(in) << "." << std::endl;
 }
