@@ -9,3 +9,15 @@ int getFloor(const std::string &in)
     return r;
 }
 
+int getIndexOfFirstBasement(const std::string &in)
+{
+    int r{0};
+    for (size_t i = 0; i < in.size(); ++i) {
+        r += in.at(i) == '(' ? 1 : -1;
+        if (r < 0) {
+            return i + 1;
+        }
+    }
+    return -1;
+}
+
