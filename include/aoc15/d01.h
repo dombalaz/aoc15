@@ -6,7 +6,7 @@
 /*
  * Get floor that Santa was taken to.
  */
-int getFloor(const std::string &x);
+int getFloor(const std::string &in);
 
 #endif // AOC15_D01_H
 
