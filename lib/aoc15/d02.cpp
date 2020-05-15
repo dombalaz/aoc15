@@ -2,18 +2,20 @@
 
 uint paperForGift(uint x, uint y, uint z)
 {
-    // TODO implement
-    (void)x;
-    (void)y;
-    (void)z;
-    return 0;
+    return 2 * (x * y + x * z + y * z) + areaOfSmallest(x, y, z);
 }
 
 uint areaOfSmallest(uint x, uint y, uint z)
 {
-    // TODO implement
-    (void)x;
-    (void)y;
-    (void)z;
-    return 0;   
+    uint a = x * y;
+    uint b = x * z;
+    uint c = y * z;
+
+    if (a < b && a < c) {
+        return a;
+    } else if (b < c && b < a) {
+        return b;
+    } else {
+        return c;
+    }
 }
