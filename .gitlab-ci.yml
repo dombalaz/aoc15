@@ -1,0 +1,42 @@
+stages:
+  - build
+  - test
+
+build_gcc:
+  stage: build
+  image: gcc
+  before_script:
+    - apt-get update
+    - apt-get install -y cmake
+  script:
+    - mkdir build
+    - cd build
+    - cmake ../
+    - make
+
+build_clang:
+  stage: build
+  image: ubuntu:focal
+  before_script:
+    - apt-get update
+    - apt-get install -y clang cmake
+  script:
+    - mkdir build
+    - cd build
+    - cmake ../
+    - make
+
+test_gtest:
+  stage: test
+  image: mink0/gtest
+  script:
+    - mkdir build
+    - cd build
+    - cmake ../
+    - make 
+    - cd test
+    - ./aoc15-d01-unittest --gtest_output=xml:gtest-report.xml
+  artifacts:
+    reports:
+      junit:
+        - build/test/gtest-report.xml
