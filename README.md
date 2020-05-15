@@ -1,12 +1,12 @@
 # Advent of Code 2015
 
 🎅🎄
-Aoc15 is a project for solving [AoC15](https://adventofcode.com/2015/) problems.
+Aoc15 is my take on [AoC15](https://adventofcode.com/2015/) problems.
 
 ## Build
 
-To compile project, you must have compiler with c++17 support and cmake version at least 3.10.2.
-```sh
+To compile, you must have compiler with c++17 support and cmake version at least 3.10.2.
+```console
 mkdir build
 cd build
 cmake ../
@@ -16,7 +16,7 @@ make
 ## Test
 
 Running tests is also very simple.
-```sh
+```console
 # without compilation
 make test
 
@@ -27,7 +27,7 @@ make check
 ## Usage
 
 Project will compile binaries for all days. To solve problems run:
-```sh
+```console
 ./aoc15-dXY <FILE>
 ```
 
