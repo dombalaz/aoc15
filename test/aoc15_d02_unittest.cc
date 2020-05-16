@@ -19,5 +19,11 @@ TEST(Day02_Task01_Test, AreaOfSmallest)
     EXPECT_EQ(6, areaOfSmallest(4, 2, 3));
     EXPECT_EQ(6, areaOfSmallest(3, 4, 2));
     EXPECT_EQ(4, areaOfSmallest(2, 2, 2));
+    EXPECT_EQ(1, areaOfSmallest(1, 10, 1));
+    EXPECT_EQ(1, areaOfSmallest(10, 1, 1));
+
+    EXPECT_EQ(10, areaOfSmallest(1, 10, 10));
+    EXPECT_EQ(10, areaOfSmallest(10, 1, 10));
+    EXPECT_EQ(10, areaOfSmallest(10, 10, 1));
 }
 
