@@ -11,11 +11,5 @@ uint areaOfSmallest(uint x, uint y, uint z)
     uint b = x * z;
     uint c = y * z;
 
-    if (a < b && a < c) {
-        return a;
-    } else if (b < c && b < a) {
-        return b;
-    } else {
-        return c;
-    }
+    return a < b ? (a < c ? a : c) : (b < c ? b : c);
 }
