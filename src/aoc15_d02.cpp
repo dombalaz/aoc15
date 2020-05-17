@@ -3,12 +3,14 @@
 #include <fstream>
 #include <iostream>
 
-auto constexpr binName{"aoc15_d02: "};
+auto constexpr binName{"aoc15_d02"};
 auto constexpr inputLink{"httsp://adventofcode.com/2015/day/2/input"};
 
 void printHelp();
 
 void solveTaskOne(std::ifstream &f);
+
+void solveTaskTwo(std::ifstream &f);
 
 int main(int argc, char **argv)
 {
@@ -22,6 +24,11 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
     solveTaskOne(f);
+
+    f.clear();
+    f.seekg(0);
+
+    solveTaskTwo(f);
 
     f.close();
 
@@ -52,5 +59,22 @@ void solveTaskOne(std::ifstream &f)
         r += paperForGift(x, y, z);
     }
     std::cout << binName << ": Solution to day one task one is " << r 
+        << std::endl;
+}
+
+void solveTaskTwo(std::ifstream &f)
+{
+    std::string l;
+    uint r{0};
+    while (std::getline(f, l)) {
+        auto i = l.find('x');
+        auto x = std::stoul(l.substr(0, i));
+        l = l.substr(i + 1);
+        i = l.find('x');
+        auto y = std::stoul(l.substr(0, i));
+        auto z = std::stoul(l.substr(i + 1));
+        r += ribbonForGift(x, y, z);
+    }
+    std::cout << binName << ": Solution to day one task two is " << r 
         << std::endl;
 }
