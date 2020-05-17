@@ -10,6 +10,8 @@ void printHelp();
 
 void solveTaskOne(const std::string &l);
 
+void solveTaskTwo(const std::string &l);
+
 int main(int argc, char **argv)
 {
     if(argc != 2) {
@@ -26,6 +28,7 @@ int main(int argc, char **argv)
     f.close();
 
     solveTaskOne(l);
+    solveTaskTwo(l);
 
     return EXIT_SUCCESS;
 }
@@ -45,4 +48,11 @@ void solveTaskOne(const std::string &l)
     auto r = visitedHousesBySanta(l);
     std::cout << binName << ": ";
     std::cout << "Solution to day three task one is " << r << std::endl;
+}
+
+void solveTaskTwo(const std::string &l)
+{
+    auto r = visitedHousesBySantaAndRobot(l);
+    std::cout << binName << ": ";
+    std::cout << "Solution to day three task two is " << r << std::endl;
 }
