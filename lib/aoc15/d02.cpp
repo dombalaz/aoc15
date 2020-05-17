@@ -1,5 +1,7 @@
 #include <aoc15/d02.h>
 
+#include <algorithm>
+
 uint paperForGift(uint x, uint y, uint z)
 {
     return 2 * (x * y + x * z + y * z) + areaOfSmallest(x, y, z);
@@ -7,9 +9,10 @@ uint paperForGift(uint x, uint y, uint z)
 
 uint areaOfSmallest(uint x, uint y, uint z)
 {
-    uint a = x * y;
-    uint b = x * z;
-    uint c = y * z;
+    return std::min({x * y, x * z, y * z});
+}
 
-    return a < b ? (a < c ? a : c) : (b < c ? b : c);
+uint ribbonForGift(uint x, uint y, uint z)
+{
+    return 2 * (x + y + z - std::max({x, y, z})) + x * y * z;
 }

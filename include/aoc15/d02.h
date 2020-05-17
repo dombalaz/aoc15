@@ -9,5 +9,7 @@ uint paperForGift(uint x, uint y, uint z);
 
 uint areaOfSmallest(uint x, uint y, uint z);
 
+uint ribbonForGift(uint x, uint y, uint z);
+
 #endif // AOC15_D01_H
 

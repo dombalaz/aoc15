@@ -27,3 +27,9 @@ TEST(Day02_Task01_Test, AreaOfSmallest)
     EXPECT_EQ(10, areaOfSmallest(10, 10, 1));
 }
 
+TEST(Day02_Task02_Test, RibbonTest)
+{
+    EXPECT_EQ(34, ribbonForGift(2, 3, 4));
+    EXPECT_EQ(14, ribbonForGift(1, 1, 10));
+    EXPECT_EQ(122, ribbonForGift(1, 10, 10));
+}
