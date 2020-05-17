@@ -9,3 +9,12 @@ TEST(Day03_Task01_Test, VisitedHousesBySanta)
 
     EXPECT_EQ(1, visitedHousesBySanta(""));
 }
+
+TEST(Day03_Task02_Test, VisitedHousesBySantaAndRobot)
+{
+    EXPECT_EQ(3, visitedHousesBySantaAndRobot("^v"));
+    EXPECT_EQ(3, visitedHousesBySantaAndRobot("^>v<"));
+    EXPECT_EQ(11, visitedHousesBySantaAndRobot("^v^v^v^v^v"));
+
+    EXPECT_EQ(1, visitedHousesBySantaAndRobot(""));
+}

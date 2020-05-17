@@ -27,3 +27,9 @@ uint visitedHousesBySanta(const std::string &in)
     }
     return grid.size();
 }
+
+uint visitedHousesBySantaAndRobot(const std::string & in)
+{
+    (void)in;
+    return 0;
+}
