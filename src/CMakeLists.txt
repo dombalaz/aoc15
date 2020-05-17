@@ -5,10 +5,7 @@ set(CMAKE_CXX_REQUIRED True)
 set(TARGETS
     aoc15_d01
     aoc15_d02
-)
-set(SOURCE
-    ${CMAKE_CURRENT_SOURCE_DIR}/aoc15_d01.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/aoc15_d02.cpp
+    aoc15_d03
 )
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
