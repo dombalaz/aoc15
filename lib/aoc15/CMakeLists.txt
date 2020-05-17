@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_REQUIRED True)
 set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/d01.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/d02.cpp
 )
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
