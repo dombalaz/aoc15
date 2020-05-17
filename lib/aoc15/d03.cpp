@@ -2,6 +2,7 @@
 
 #include <utility>
 #include <set>
+#include <vector>
 
 uint visitedHousesBySanta(const std::string &in)
 {
@@ -28,8 +29,28 @@ uint visitedHousesBySanta(const std::string &in)
     return grid.size();
 }
 
-uint visitedHousesBySantaAndRobot(const std::string & in)
+uint visitedHousesBySantaAndRobot(const std::string &in)
 {
-    (void)in;
-    return 0;
+    std::set<std::pair<int, int>> grid{{0, 0}};
+    std::vector<std::pair<int, int>> cs{{0, 0}, {0, 0}};
+    int santasMove{0};
+    for(const auto &c : in) {
+        switch(c) {
+        case '^':
+            ++cs[santasMove].second;
+            break;
+        case '>':
+            ++cs[santasMove].first;
+            break;
+        case 'v':
+            --cs[santasMove].second;
+            break;
+        case '<':
+            --cs[santasMove].first;
+            break;
+        }
+        grid.insert({cs.at(santasMove).first, cs.at(santasMove).second});
+        santasMove = santasMove == 0 ? 1 : 0;
+    }
+    return grid.size();
 }
