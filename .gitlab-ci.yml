@@ -35,8 +35,12 @@ test_gtest:
     - cmake ../
     - make 
     - cd test
-    - ./aoc15-d01-unittest --gtest_output=xml:gtest-report.xml
+    - ./aoc15_d01_unittest --gtest_output=xml:gtest-report-01.xml
+    - ./aoc15_d02_unittest --gtest_output=xml:gtest-report-02.xml
+    - ./aoc15_d03_unittest --gtest_output=xml:gtest-report-03.xml
   artifacts:
     reports:
       junit:
-        - build/test/gtest-report.xml
+        - build/test/gtest-report-01.xml
+        - build/test/gtest-report-02.xml
+        - build/test/gtest-report-03.xml
