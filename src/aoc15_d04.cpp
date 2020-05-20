@@ -10,6 +10,8 @@ void printHelp();
 
 void solveTaskOne(const std::string &l);
 
+void solveTaskTwo(const std::string &l);
+
 int main(int argc, char **argv)
 {
     if(argc != 2) {
@@ -26,6 +28,7 @@ int main(int argc, char **argv)
     f.close();
 
     solveTaskOne(l);
+    solveTaskTwo(l);
 
     return EXIT_SUCCESS;
 }
@@ -33,7 +36,7 @@ int main(int argc, char **argv)
 void printHelp()
 {
     std::cout << "Usage: " << binName << " FILE" << std::endl;
-    std::cout << "Compute aoc15 day three challenge." << std::endl;
+    std::cout << "Compute aoc15 day four challenge." << std::endl;
     std::cout << std::endl;
 
     std::cout << "Make sure your input file is correct." << std::endl;
@@ -45,4 +48,11 @@ void solveTaskOne(const std::string &l)
     auto r = miningNumber(l, 5);
     std::cout << binName << ": ";
     std::cout << "Solution to day 4 task one is " << r << std::endl;
+}
+
+void solveTaskTwo(const std::string &l)
+{
+    auto r = miningNumber(l, 6);
+    std::cout << binName << ": ";
+    std::cout << "Solution to day 4 task two is " << r << std::endl;
 }
