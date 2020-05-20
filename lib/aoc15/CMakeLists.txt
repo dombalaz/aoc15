@@ -14,3 +14,5 @@ add_compile_options(-Wall -Wextra -pedantic -Werror)
 add_library(aoc15 SHARED ${SOURCE})
 
 target_include_directories(aoc15 PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(aoc15 PUBLIC ${OPENSSL_INCLUDE_DIR})
+target_link_libraries(aoc15 ${OPENSSL_CRYPTO_LIBRARY})
