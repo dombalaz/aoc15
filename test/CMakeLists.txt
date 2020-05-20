@@ -18,7 +18,7 @@ foreach(target ${TARGETS})
     )
     target_include_directories(${target} PUBLIC ${GTEST_INCLUDE_DIRS})
     target_link_libraries(${target} aoc15 GTest::GTest GTest::Main)
-    add_test(Test_${target} ${target})
+    add_test(Test_${target} ${target} --gtest_output=xml:${target}-report.xml)
 endforeach(target ${TARGETS})
 
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS ${TARGETS})
