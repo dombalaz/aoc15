@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 void printHelp()
 {
     std::cout << "Usage: " << binName << " FILE" << std::endl;
-    std::cout << "Compute aoc15 day one challenge." << std::endl;
+    std::cout << "Compute aoc15 day two challenge." << std::endl;
     std::cout << std::endl;
 
     std::cout << "Make sure your input file is correct." << std::endl;
@@ -58,7 +58,7 @@ void solveTaskOne(std::ifstream &f)
         auto z = std::stoul(l.substr(i + 1));
         r += paperForGift(x, y, z);
     }
-    std::cout << binName << ": Solution to day one task one is " << r 
+    std::cout << binName << ": Solution to day two task one is " << r 
         << std::endl;
 }
 
@@ -75,6 +75,6 @@ void solveTaskTwo(std::ifstream &f)
         auto z = std::stoul(l.substr(i + 1));
         r += ribbonForGift(x, y, z);
     }
-    std::cout << binName << ": Solution to day one task two is " << r 
+    std::cout << binName << ": Solution to day two task two is " << r 
         << std::endl;
 }
