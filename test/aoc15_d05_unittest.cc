@@ -1,26 +1,48 @@
 #include <aoc15/d05.h>
 #include <gtest/gtest.h>
 
-constexpr auto vowels{'a', 'e', 'i', 'o', 'u'};
-
-TEST(Day05_Task01_Test, DoesContainsAtLeastNLetters)
+TEST(Day05_Task01_Test, ContainsAtLeast3Vowels)
 {
-    EXPECT_TRUE(containsAtLeastNLetters("aei", 3, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("xazegov", 3, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aeiouaeiouaeiou", 3, vowels));
+    EXPECT_TRUE(containsAtLeast3Vowels("aei"));
+    EXPECT_TRUE(containsAtLeast3Vowels("aaa"));
+    EXPECT_TRUE(containsAtLeast3Vowels("xazegov"));
+    EXPECT_TRUE(containsAtLeast3Vowels("aeiouaeiouaeiou"));
 
-    EXPECT_TRUE(containsAtLeastNLetters("", 0, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("qrs", 0, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("sa", 1, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aeiou", 5, vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aeiouaeiou", 6, vowels));
+    EXPECT_FALSE(containsAtLeast3Vowels(""));
+    EXPECT_FALSE(containsAtLeast3Vowels("x"));
+    EXPECT_FALSE(containsAtLeast3Vowels("aa"));
+    EXPECT_FALSE(containsAtLeast3Vowels("xxaexx"));
 }
 
-TEST(Day05_Task01_Test, DoesNotContainsAtLeastNLetter)
+TEST(Day05_Task01_Test, ContainsOneLetterTwiceInRow)
 {
-    EXPECT_TRUE(containsAtLeastNLetters("", 1,vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("asd", 3,vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aeio", 5,vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aa", 2,vowels));
-    EXPECT_TRUE(containsAtLeastNLetters("aaeeii", 5,vowels));
+    EXPECT_TRUE(containsOneLetterTwiceInRow("xx"));
+    EXPECT_TRUE(containsOneLetterTwiceInRow("abcdde"));
+    EXPECT_TRUE(containsOneLetterTwiceInRow("aabbccdd"));
+
+    EXPECT_FALSE(containsOneLetterTwiceInRow(""));
+    EXPECT_FALSE(containsOneLetterTwiceInRow("x"));
+    EXPECT_FALSE(containsOneLetterTwiceInRow("abcde"));
+}
+
+TEST(Day05_Task01_Test, DoesntContainsTheStrings)
+{
+    EXPECT_TRUE(doesntContainsTheStrings(""));
+    EXPECT_TRUE(doesntContainsTheStrings("ace"));
+
+    EXPECT_FALSE(doesntContainsTheStrings("ab"));
+    EXPECT_FALSE(doesntContainsTheStrings("cd"));
+    EXPECT_FALSE(doesntContainsTheStrings("pq"));
+    EXPECT_FALSE(doesntContainsTheStrings("xy"));
+    EXPECT_FALSE(doesntContainsTheStrings("xxxxxabxxxx"));
+}
+
+TEST(Dayo05_Task01_Test, IsNice)
+{
+    EXPECT_TRUE(isNice("ugknbfddgicrmopn"));
+    EXPECT_TRUE(isNice("aaa"));
+
+    EXPECT_FALSE(isNice("jchzalrnumimnmhp"));
+    EXPECT_FALSE(isNice("haegwjzuvuyypxyu"));
+    EXPECT_FALSE(isNice("dvszwmarrgswjxmb"));
 }
