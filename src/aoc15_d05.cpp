@@ -10,6 +10,8 @@ void printHelp();
 
 void solveTaskOne(std::ifstream &f);
 
+void solveTaskTwo(std::ifstream &f);
+
 int main(int argc, char **argv)
 {
     if(argc != 2) {
@@ -23,6 +25,11 @@ int main(int argc, char **argv)
     }
 
     solveTaskOne(f);
+
+    f.clear();
+    f.seekg(0);
+
+    solveTaskTwo(f);
 
     f.close();
 
@@ -49,6 +56,18 @@ void solveTaskOne(std::ifstream &f)
 	}
     }
     std::cout << binName << ": Solution to day five task one is " << r
-	    << std::endl;
+        << std::endl;
 }
 
+void solveTaskTwo(std::ifstream &f)
+{
+    std::string l;
+    std::uint32_t r{0};
+    while (std::getline(f, l)) {
+        if (isNice2(l)) {
+	    ++r;
+	}
+    }
+    std::cout << binName << ": Solution to day five task one is " << r
+        << std::endl;
+}

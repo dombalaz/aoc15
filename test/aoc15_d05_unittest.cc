@@ -46,3 +46,35 @@ TEST(Dayo05_Task01_Test, IsNice)
     EXPECT_FALSE(isNice("haegwjzuvuyypxyu"));
     EXPECT_FALSE(isNice("dvszwmarrgswjxmb"));
 }
+
+TEST(Day05_Task02_Test, twoPairsOfTwoLetters)
+{
+    EXPECT_TRUE(twoPairsOfTwoLetters("xyxy"));
+    EXPECT_TRUE(twoPairsOfTwoLetters("aabcdefgaa"));
+    EXPECT_TRUE(twoPairsOfTwoLetters("qjhvhtzxzqqjkmpb"));
+    EXPECT_TRUE(twoPairsOfTwoLetters("uurcxstgmygtbstg"));
+
+    EXPECT_FALSE(twoPairsOfTwoLetters(""));
+    EXPECT_FALSE(twoPairsOfTwoLetters("aaa"));
+    EXPECT_FALSE(twoPairsOfTwoLetters("abcdefgh"));
+    EXPECT_FALSE(twoPairsOfTwoLetters("ieodomkazucvgmuy"));
+}
+
+TEST(Day05_Task02_Test, repeatedLetterWithLetterBetween)
+{
+    EXPECT_TRUE(repeatedLetterWithLetterBetween("xyx"));
+    EXPECT_TRUE(repeatedLetterWithLetterBetween("abcdefeghi"));
+    EXPECT_TRUE(repeatedLetterWithLetterBetween("aaa"));
+
+    EXPECT_FALSE(repeatedLetterWithLetterBetween(""));
+    EXPECT_FALSE(repeatedLetterWithLetterBetween("uurcxstgmygtbstg"));
+}
+
+TEST(Day05_Task02_Test, isNice2)
+{
+    EXPECT_TRUE(isNice2("qjhvhtzxzqqjkmpb"));
+    EXPECT_TRUE(isNice2("xxyxx"));
+
+    EXPECT_FALSE(isNice2("uurcxstgmygtbstg"));
+    EXPECT_FALSE(isNice2("ieodomkazucvgmuy"));
+}
