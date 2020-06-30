@@ -1,10 +1,10 @@
-#include <aoc15/d02.h>
+#include <aoc15/d05.h>
 
 #include <fstream>
 #include <iostream>
 
-auto constexpr binName{"aoc15_d02"};
-auto constexpr inputLink{"httsp://adventofcode.com/2015/day/2/input"};
+auto constexpr binName{"aoc15_d05"};
+auto constexpr inputLink{"httsp://adventofcode.com/2015/day/5/input"};
 
 void printHelp();
 
@@ -23,6 +23,7 @@ int main(int argc, char **argv)
         std::cerr << binName << ": Failed to open the file." << std::endl;
         return EXIT_FAILURE;
     }
+
     solveTaskOne(f);
 
     f.clear();
@@ -38,7 +39,7 @@ int main(int argc, char **argv)
 void printHelp()
 {
     std::cout << "Usage: " << binName << " FILE" << std::endl;
-    std::cout << "Compute aoc15 day two challenge." << std::endl;
+    std::cout << "Compute aoc15 day five challenge." << std::endl;
     std::cout << std::endl;
 
     std::cout << "Make sure your input file is correct." << std::endl;
@@ -50,31 +51,23 @@ void solveTaskOne(std::ifstream &f)
     std::string l;
     std::uint32_t r{0};
     while (std::getline(f, l)) {
-        auto i = l.find('x');
-        auto x = std::stoul(l.substr(0, i));
-        l = l.substr(i + 1);
-        i = l.find('x');
-        auto y = std::stoul(l.substr(0, i));
-        auto z = std::stoul(l.substr(i + 1));
-        r += paperForGift(x, y, z);
+        if (isNice(l)) {
+	    ++r;
+	}
     }
-    std::cout << binName << ": Solution to day two task one is " << r 
+    std::cout << binName << ": Solution to day five task one is " << r
         << std::endl;
 }
 
 void solveTaskTwo(std::ifstream &f)
 {
     std::string l;
-    uint r{0};
+    std::uint32_t r{0};
     while (std::getline(f, l)) {
-        auto i = l.find('x');
-        auto x = std::stoul(l.substr(0, i));
-        l = l.substr(i + 1);
-        i = l.find('x');
-        auto y = std::stoul(l.substr(0, i));
-        auto z = std::stoul(l.substr(i + 1));
-        r += ribbonForGift(x, y, z);
+        if (isNice2(l)) {
+	    ++r;
+	}
     }
-    std::cout << binName << ": Solution to day two task two is " << r 
+    std::cout << binName << ": Solution to day five task one is " << r
         << std::endl;
 }
