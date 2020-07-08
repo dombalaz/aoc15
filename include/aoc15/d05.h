@@ -1,5 +1,5 @@
 #ifndef AOC15_D05_H
-#define AOC15_D05_h
+#define AOC15_D05_H
 
 #include <string>
 #include <vector>
@@ -18,4 +18,4 @@ bool repeatedLetterWithLetterBetween(const std::string &in);
 
 bool isNice2(const std::string &in);
 
-#endif // AOC15_D05_h
+#endif // AOC15_D05_H
