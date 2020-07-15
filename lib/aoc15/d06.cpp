@@ -1,31 +1,56 @@
 #include <aoc15/d06.h>
 
+#include <algorithm>
+#include <numeric>
+
 LightsGrid createLightsGrid(size_t width, size_t height, bool init)
 {
-    return LightsGrid();
+    return LightsGrid(height, std::vector<bool>(width, init));
 }
 
-void turnLightsOn(LightsGrid &lightsGrid, const Point &from, const Point &to)
+void doLights(LightInstruction li, LightsGrid lg, const Point &from, const Point &to)
 {
-
+    switch (li) {
+    case LightInstruction::On :
+        turnLightsOn(lg, from, to);
+        break;
+    case LightInstruction::Off :
+        turnLightsOff(lg, from, to);
+        break;
+    case LightInstruction::Toggle :
+        toggleLights(lg, from, to);
+        break;
+    }
 }
 
-void turnLightsOff(LightsGrid &lightsGrid, const Point &from, const Point &to)
+void turnLightsOn(LightsGrid &lg, const Point &from, const Point &to)
 {
-
+    for (size_t i = from.second; i <= to.second; ++i) {
+        for (size_t j = from.first; j <= to.first; ++j) {
+            lg[i][j] = true;
+        }
+    }
 }
 
-void toggleLights(LightsGrid &lightsGrid, const Point &from, const Point &to)
+void turnLightsOff(LightsGrid &lg, const Point &from, const Point &to)
 {
-
+    for (size_t i = from.second; i <= to.second; ++i) {
+        for (size_t j = from.first; j <= to.first; ++j) {
+            lg[i][j] = false;
+        }
+    }
 }
 
-bool isLightOn(const LightsGrid &lightsGrid, const Point &point)
+void toggleLights(LightsGrid &lg, const Point &from, const Point &to)
 {
-    return false;
+    for (size_t i = from.second; i <= to.second; ++i) {
+        for (size_t j = from.first; j <= to.first; ++j) {
+            lg[i][j] = !lg[i][j];
+        }
+    }
 }
 
-size_t countLights(const LightsGrid &lightsGrid)
+size_t countLightsOn(const LightsGrid &lg)
 {
-    return 0;
+    return std::accumulate(lg.begin(), lg.end(), 0, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::count(rhs.begin(), rhs.end(), true); });
 }
