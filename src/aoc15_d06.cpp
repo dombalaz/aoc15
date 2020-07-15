@@ -9,7 +9,7 @@ auto constexpr inputLink{"httsp://adventofcode.com/2015/day/6/input"};
 
 void printHelp();
 
-void solveTaskOne(std::ifstream &f);
+void solveTaskOneTwo(std::ifstream &f);
 
 int main(int argc, char **argv)
 {
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    solveTaskOne(f);
+    solveTaskOneTwo(f);
 
     f.close();
 
@@ -40,12 +40,13 @@ void printHelp()
     std::cout << inputLink << std::endl;
 }
 
-void solveTaskOne(std::ifstream &f)
+void solveTaskOneTwo(std::ifstream &f)
 {
     std::string l;
     std::regex regex("(turn on|toggle|turn off) ([0-9]*),([0-9]*) through ([0-9]*),([0-9]*)");
     std::smatch match;
     auto lg = createLightsGrid(LightsGridSize, LightsGridSize);
+    auto blg = createBLightsGrid(LightsGridSize, LightsGridSize);
     while (std::getline(f, l)) {
         std::regex_match(l, match, regex);
         LightInstruction li{LightInstruction::On};
@@ -59,8 +60,11 @@ void solveTaskOne(std::ifstream &f)
         Point from{std::stoul(match[2]), std::stoul(match[3])};
         Point to{std::stoul(match[4]), std::stoul(match[5])};
         doLights(li, lg, from, to);
+        doLights(li, blg, from, to);
 	}
     std::cout << binName << ": Solution to day six task one is " << countLightsOn(lg)
+        << std::endl;
+    std::cout << binName << ": Solution to day six task two is " << totalBrightness(blg)
         << std::endl;
 }
 
