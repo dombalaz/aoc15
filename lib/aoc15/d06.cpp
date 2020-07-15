@@ -54,3 +54,33 @@ size_t countLightsOn(const LightsGrid &lg)
 {
     return std::accumulate(lg.begin(), lg.end(), 0, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::count(rhs.begin(), rhs.end(), true); });
 }
+
+BLightsGrid createBLightsGrid(size_t width, size_t height, size_t init)
+{
+    return {};
+}
+
+void doLights(LightInstruction li, BLightsGrid &lg, const Point &from, const Point &to)
+{
+
+}
+
+void turnLightsOn(BLightsGrid &lg, const Point &from, const Point &to)
+{
+
+}
+
+void turnLightsOff(BLightsGrid &lg, const Point &from, const Point &to)
+{
+
+}
+
+void toggleLights(BLightsGrid &lg, const Point &from, const Point &to)
+{
+
+}
+
+size_t totalBrightness(const BLightsGrid &lg)
+{
+    return 0;
+}
