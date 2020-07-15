@@ -82,3 +82,57 @@ TEST(Day06_Task01_Test, ToggleLights)
     toggleLights(lg, {0, 0}, {2, 2});
     EXPECT_EQ(lg, expectedLg);
 }
+
+TEST(Day06_Task02_Test, TotalBrigthness)
+{
+    BLightsGrid blg = {
+        { 1, 2, 1 },
+        { 1, 2, 1 },
+        { 0, 2, 1 }
+    };
+
+    EXPECT_EQ(totalBrightness(blg), 11);
+    EXPECT_EQ(totalBrightness(createBLightsGrid(SmallGridSize, SmallGridSize)), 0);
+    EXPECT_EQ(totalBrightness(createBLightsGrid(SmallGridSize, SmallGridSize, 10)), 250);
+}
+
+TEST(Day06_Task_02_Test, TurnBLightsOn)
+{
+    BLightsGrid expected = {
+        { 1, 2, 1 },
+        { 1, 2, 1 },
+        { 0, 2, 1 }
+    };
+    auto blg = createBLightsGrid(3, 3);
+    turnLightsOn(blg, {0, 0}, {2, 1});
+    turnLightsOn(blg, {1, 0}, {1, 2});
+    turnLightsOn(blg, {1, 2}, {2, 2});
+    EXPECT_EQ(blg, expected);
+}
+
+TEST(Day06_Task_02_Test, TurnBLightsOff)
+{
+    BLightsGrid blg = {
+        { 1, 2, 1 },
+        { 1, 2, 1 },
+        { 0, 2, 1 }
+    };
+    turnLightsOff(blg, {1, 2}, {2, 2});
+    turnLightsOff(blg, {1, 0}, {1, 2});
+    turnLightsOff(blg, {0, 0}, {2, 1});
+    EXPECT_EQ(blg, createBLightsGrid(3, 3));
+}
+
+TEST(Day06_Task_02_Test, ToggleBLightsOff)
+{
+    BLightsGrid expected = {
+        { 2, 4, 2 },
+        { 2, 4, 2 },
+        { 0, 4, 2 }
+    };
+    auto blg = createBLightsGrid(3, 3);
+    toggleLights(blg, {0, 0}, {2, 1});
+    toggleLights(blg, {1, 0}, {1, 2});
+    toggleLights(blg, {1, 2}, {2, 2});
+    EXPECT_EQ(blg, expected);
+}

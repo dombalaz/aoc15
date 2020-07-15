@@ -57,30 +57,49 @@ size_t countLightsOn(const LightsGrid &lg)
 
 BLightsGrid createBLightsGrid(size_t width, size_t height, size_t init)
 {
-    return {};
+    return BLightsGrid(height, std::vector<size_t>(width, init));
 }
 
-void doLights(LightInstruction li, BLightsGrid &lg, const Point &from, const Point &to)
+void doLights(LightInstruction li, BLightsGrid &blg, const Point &from, const Point &to)
 {
-
+    switch (li) {
+    case LightInstruction::On :
+        turnLightsOn(blg, from, to);
+        break;
+    case LightInstruction::Off :
+        turnLightsOff(blg, from, to);
+        break;
+    case LightInstruction::Toggle :
+        toggleLights(blg, from, to);
+        break;
+    }
 }
 
-void turnLightsOn(BLightsGrid &lg, const Point &from, const Point &to)
+void turnLightsOn(BLightsGrid &blg, const Point &from, const Point &to)
 {
-
+    for (size_t i = from.second; i <= to.second; ++i) {
+        for (size_t j = from.first; j <= to.first; ++j) {
+            ++(blg[i][j]);
+        }
+    }
 }
 
-void turnLightsOff(BLightsGrid &lg, const Point &from, const Point &to)
+void turnLightsOff(BLightsGrid &blg, const Point &from, const Point &to)
 {
-
+    for (size_t i = from.second; i <= to.second; ++i) {
+        for (size_t j = from.first; j <= to.first; ++j) {
+            --(blg[i][j]);
+        }
+    }
 }
 
-void toggleLights(BLightsGrid &lg, const Point &from, const Point &to)
+void toggleLights(BLightsGrid &blg, const Point &from, const Point &to)
 {
-
+    turnLightsOn(blg, from, to);
+    turnLightsOn(blg, from, to);
 }
 
-size_t totalBrightness(const BLightsGrid &lg)
+size_t totalBrightness(const BLightsGrid &blg)
 {
-    return 0;
+    return std::accumulate(blg.begin(), blg.end(), 0, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::accumulate(rhs.begin(), rhs.end(), 0); });
 }
