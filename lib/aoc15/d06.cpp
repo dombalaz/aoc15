@@ -79,7 +79,9 @@ void turnLightsOn(BLightsGrid &blg, const Point &from, const Point &to)
 {
     for (size_t i = from.second; i <= to.second; ++i) {
         for (size_t j = from.first; j <= to.first; ++j) {
-            ++(blg[i][j]);
+            if (blg[i][j] != std::numeric_limits<size_t>::max()) {
+                ++(blg[i][j]);
+            }
         }
     }
 }
@@ -88,7 +90,9 @@ void turnLightsOff(BLightsGrid &blg, const Point &from, const Point &to)
 {
     for (size_t i = from.second; i <= to.second; ++i) {
         for (size_t j = from.first; j <= to.first; ++j) {
-            --(blg[i][j]);
+            if(blg[i][j] != 0) {
+                --(blg[i][j]);
+            }
         }
     }
 }

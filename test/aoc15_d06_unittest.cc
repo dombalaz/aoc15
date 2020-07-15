@@ -108,6 +108,10 @@ TEST(Day06_Task_02_Test, TurnBLightsOn)
     turnLightsOn(blg, {1, 0}, {1, 2});
     turnLightsOn(blg, {1, 2}, {2, 2});
     EXPECT_EQ(blg, expected);
+    auto testMax = createBLightsGrid(1, 1, std::numeric_limits<size_t>::max());
+    expected = testMax;
+    turnLightsOn(testMax, {0, 0}, {0, 0});
+    EXPECT_EQ(testMax, expected);
 }
 
 TEST(Day06_Task_02_Test, TurnBLightsOff)
@@ -120,6 +124,8 @@ TEST(Day06_Task_02_Test, TurnBLightsOff)
     turnLightsOff(blg, {1, 2}, {2, 2});
     turnLightsOff(blg, {1, 0}, {1, 2});
     turnLightsOff(blg, {0, 0}, {2, 1});
+    EXPECT_EQ(blg, createBLightsGrid(3, 3));
+    turnLightsOff(blg, {0, 0}, {0, 0});
     EXPECT_EQ(blg, createBLightsGrid(3, 3));
 }
 
