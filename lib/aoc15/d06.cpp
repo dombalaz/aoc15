@@ -8,7 +8,7 @@ LightsGrid createLightsGrid(size_t width, size_t height, bool init)
     return LightsGrid(height, std::vector<bool>(width, init));
 }
 
-void doLights(LightInstruction li, LightsGrid lg, const Point &from, const Point &to)
+void doLights(LightInstruction li, LightsGrid &lg, const Point &from, const Point &to)
 {
     switch (li) {
     case LightInstruction::On :
