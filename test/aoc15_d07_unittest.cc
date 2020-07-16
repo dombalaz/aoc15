@@ -11,7 +11,9 @@ TEST(Day02_Task01_Test, SignalOnWire)
         {"f", "x LSHIFT 2"},
         {"g", "y RSHIFT 2"},
         {"h", "NOT x"},
-        {"i", "NOT y"}
+        {"i", "NOT y"},
+        {"j", "i"},
+        {"k", "123 AND y"}
     };
 
     EXPECT_EQ(signalOnWire("x", c), 123);
@@ -22,4 +24,6 @@ TEST(Day02_Task01_Test, SignalOnWire)
     EXPECT_EQ(signalOnWire("g", c), 114);
     EXPECT_EQ(signalOnWire("h", c), 65412);
     EXPECT_EQ(signalOnWire("i", c), 65079);
+    EXPECT_EQ(signalOnWire("j", c), signalOnWire("i", c));
+    EXPECT_EQ(signalOnWire("k", c), 72);
 }
