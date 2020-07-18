@@ -11,6 +11,8 @@ void printHelp();
 
 void solvePartOne(std::vector<std::string> &v);
 
+void solvePartTwo(std::vector<std::string> &v);
+
 int main(int argc, char **argv)
 {
     if(argc != 2) {
@@ -31,6 +33,7 @@ int main(int argc, char **argv)
     f.close();
 
     solvePartOne(v);
+    solvePartTwo(v);
 
     return EXIT_SUCCESS;
 }
@@ -57,3 +60,14 @@ void solvePartOne(std::vector<std::string> &v)
         << std::endl;
 }
 
+void solvePartTwo(std::vector<std::string> &v)
+{
+    auto totalEncodedChars{0u};
+    auto totalChars{0u};
+    for (auto i = 0u; i < v.size(); ++i) {
+        totalEncodedChars += countEncodedChars(v.at(i));
+        totalChars += v.at(i).size();
+    }
+    std::cout << binName << ": Solution to day eight part two is " << totalEncodedChars - totalChars
+        << std::endl;
+}

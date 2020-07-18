@@ -17,3 +17,21 @@ size_t countCharacters(const std::string &s)
     }
     return r;
 }
+
+size_t countEncodedChars(const std::string &s)
+{
+    auto top = s.size() - 1;
+    auto countSpecial{0u};
+    for (auto i = 1u; i < top; ++i) {
+        if (s.at(i) == '\\') {
+            if (s.at(i + 1) == '\\' || s.at(i + 1) == '\"') {
+                ++i;
+                countSpecial += 2;
+            } else if (s.at(i + 1) == 'x') {
+                i += 3;
+                ++countSpecial;
+            }
+        }
+    }
+    return s.size() + countSpecial + 4;
+}
