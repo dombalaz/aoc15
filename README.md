@@ -21,7 +21,7 @@ This is the progress of how am I doing:
 | [Day 6: Probably a Fire Hazard](https://adventofcode.com/2015/day/6)| :star2: |
 | [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)| :star2: |
 | [Day 8: Matchsticks](https://adventofcode.com/2015/day/8)| :star2: |
-| [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)| :star: |
+| [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)| :star2: |
 | [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)| :white_medium_square: |
 | [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11)| :white_medium_square: |
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)| :white_medium_square: |

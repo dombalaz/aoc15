@@ -11,6 +11,8 @@ void printHelp();
 
 void solvePartOne(const std::vector<std::string> &v);
 
+void solvePartTwo(const std::vector<std::string> &v);
+
 int main(int argc, char **argv)
 {
     if(argc != 2) {
@@ -31,6 +33,7 @@ int main(int argc, char **argv)
     f.close();
 
     solvePartOne(v);
+    solvePartTwo(v);
 
     return EXIT_SUCCESS;
 }
@@ -48,5 +51,11 @@ void printHelp()
 void solvePartOne(const std::vector<std::string> &v)
 {
     std::cout << binName << ": Solution to day nine part one is " << shortestDistance(v)
+        << std::endl;
+}
+
+void solvePartTwo(const std::vector<std::string> &v)
+{
+    std::cout << binName << ": Solution to day nine part two is " << longestDistance(v)
         << std::endl;
 }
