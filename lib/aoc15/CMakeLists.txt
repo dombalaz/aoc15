@@ -11,6 +11,7 @@ set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/d06.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/d07.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/d08.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/d09.cpp
 )
 
 add_compile_options(-Wall -Wextra -pedantic)

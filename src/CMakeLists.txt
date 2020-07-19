@@ -11,6 +11,7 @@ set(TARGETS
     aoc15_d06
     aoc15_d07
     aoc15_d08
+    aoc15_d09
 )
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
