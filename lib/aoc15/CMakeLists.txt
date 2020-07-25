@@ -13,11 +13,12 @@ set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/d08.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/d09.cpp
 )
+set(AOC15_LIBRARY aoc15)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
-add_library(aoc15 SHARED ${SOURCE})
+add_library(${AOC15_LIBRARY} SHARED ${SOURCE})
 
-target_include_directories(aoc15 PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_include_directories(aoc15 PUBLIC ${OPENSSL_INCLUDE_DIR})
-target_link_libraries(aoc15 ${OPENSSL_CRYPTO_LIBRARY})
+target_include_directories(${AOC15_LIBRARY} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(${AOC15_LIBRARY} PUBLIC ${OPENSSL_INCLUDE_DIR})
+target_link_libraries(${AOC15_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY})

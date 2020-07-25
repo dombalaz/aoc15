@@ -19,9 +19,9 @@ add_compile_options(-Wall -Wextra -pedantic -Werror)
 foreach(target ${TARGETS})
     add_executable(${target} ${target}.cc)
     target_include_directories(
-        ${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${target} PRIVATE ${CMAKE_SOURCE_DIR}/include
     )
-    target_include_directories(${target} PUBLIC ${GTEST_INCLUDE_DIRS})
+    target_include_directories(${target} PRIVATE ${GTEST_INCLUDE_DIRS})
     target_link_libraries(${target} aoc15 GTest::GTest GTest::Main)
     add_test(Test_${target} ${target} --gtest_output=xml:${target}-report.xml)
 endforeach(target ${TARGETS})
