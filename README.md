@@ -65,7 +65,7 @@ make check
 
 Project will compile binaries for all days. To solve problems run:
 ```console
-./aoc15-dXY <FILE>
+./aoc15 <DAY> <FILE>
 ```
 
 ## Licensing
