@@ -31,6 +31,8 @@ jobs:
       compiler:
         - gcc
       before_install:
+        - deb http://apt.llvm.org/focal/ llvm-toolchain-focal main
+        - deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal main
         - sudo apt-get -y update
         - sudo apt-get install clang-tidy
         - clang-tidy --version
