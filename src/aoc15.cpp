@@ -23,6 +23,8 @@ void solve8(const std::vector<std::string> &in);
 
 void solve9(const std::vector<std::string> &in);
 
+void solve10(const std::string &in);
+
 int main(int argc, char **argv)
 {
     if (argc != 3) {
@@ -34,6 +36,7 @@ int main(int argc, char **argv)
 
     std::ifstream f{argv[2], std::ifstream::in};
     if (!f.is_open()) {
+        std::cerr << "Failed to open the file." << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -71,6 +74,9 @@ int main(int argc, char **argv)
         break;
     case 9:
         solve9(input);
+        break;
+    case 10:
+        solve10(input.front());
         break;
     default:
         std::cerr << "Wrong day number." << std::endl;
@@ -193,3 +199,17 @@ void solve9(const std::vector<std::string> &in)
     std::cout << "9_2: " << longestDistance(in) << std::endl;
 }
 
+void solve10(const std::string &in)
+{
+    constexpr auto fortyTimes {40u};
+    constexpr auto fiftyTimes {50u};
+    auto s = in;
+    for (size_t i = 0; i < fortyTimes; ++i) {
+        s = lookAndSay(s);
+    }
+    std::cout << "10_1: " << s.size() << std::endl;
+    for (size_t i = fortyTimes; i < fiftyTimes; ++i) {
+        s = lookAndSay(s);
+    }
+    std::cout << "10_2: " << s.size() << std::endl;
+}
