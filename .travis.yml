@@ -35,7 +35,7 @@ jobs:
         - sudo apt-get install clang-tidy
       script:
         - mkdir build && cd build
-        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
+        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--checks=-*,cppcoreguidelines-*;--header-filter=.*;--warnings-as-errors=*" ../
         - make
 
     - stage: build
