@@ -32,7 +32,7 @@ jobs:
         - gcc
       before_install:
         - sudo apt-get -y update && sudo apt-get -y upgrade
-        - sudo apt-get install clang-tidy
+        - sudo apt-get install clang-tidy clang
         - clang-tidy --version
       script:
         - mkdir build && cd build
