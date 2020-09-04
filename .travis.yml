@@ -33,6 +33,7 @@ jobs:
       before_install:
         - sudo apt-get -y update
         - sudo apt-get install clang-tidy
+        - clang-tidy --version
       script:
         - mkdir build && cd build
         - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
