@@ -1,17 +1,17 @@
 #include <fstream>
 #include <iostream>
-#include <vector>
 #include <regex>
+#include <vector>
 
 #include <aoc15/aoc15.h>
 
-void solve1(const std::string &in);
+void solve1(const std::vector<std::string> &in);
 
 void solve2(const std::vector<std::string> &in);
 
-void solve3(const std::string &in);
+void solve3(const std::vector<std::string> &in);
 
-void solve4(const std::string &in);
+void solve4(const std::vector<std::string> &in);
 
 void solve5(const std::vector<std::string> &in);
 
@@ -23,22 +23,32 @@ void solve8(const std::vector<std::string> &in);
 
 void solve9(const std::vector<std::string> &in);
 
-void solve10(const std::string &in);
+void solve10(const std::vector<std::string> &in);
 
-int main(int argc, char **argv)
+auto main(int argc, char **argv) -> int
 {
     if (argc != 3) {
         std::cerr << "Wrong number of arguments." << std::endl;
         return EXIT_FAILURE;
     }
 
+    // Will be solved in c++20 with std::span
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     auto d = std::stoul(argv[1]);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     std::ifstream f{argv[2], std::ifstream::in};
     if (!f.is_open()) {
         std::cerr << "Failed to open the file." << std::endl;
         return EXIT_FAILURE;
     }
+
+    std::vector<std::function<void(std::vector<std::string>)>> funcs{
+        solve1,
+        solve2,
+        solve3,
+        solve4
+    };
 
     std::string l;
     std::vector<std::string> input;
@@ -47,55 +57,21 @@ int main(int argc, char **argv)
     }
     f.close();
 
-    switch (d) {
-    case 1:
-        solve1(input.front());
-        break;
-    case 2:
-        solve2(input);
-        break;
-    case 3:
-        solve3(input.front());
-        break;
-    case 4:
-        solve4(input.front());
-        break;
-    case 5:
-        solve5(input);
-        break;
-    case 6:
-        solve6(input);
-        break;
-    case 7:
-        solve7(input);
-        break;
-    case 8:
-        solve8(input);
-        break;
-    case 9:
-        solve9(input);
-        break;
-    case 10:
-        solve10(input.front());
-        break;
-    default:
-        std::cerr << "Wrong day number." << std::endl;
-        return EXIT_FAILURE;
-    }
+    funcs[d](input);
 
     return EXIT_SUCCESS;
 }
 
-void solve1(const std::string &in)
+void solve1(const std::vector<std::string> &in)
 {
-    std::cout << "1_1: " << getFloor(in) << std::endl;
-    std::cout << "1_2: " << getIndexOfFirstBasement(in) << std::endl;
+    std::cout << "1_1: " << getFloor(in.front()) << std::endl;
+    std::cout << "1_2: " << getIndexOfFirstBasement(in.front()) << std::endl;
 }
 
 void solve2(const std::vector<std::string> &in)
 {
-    auto r1 = 0u;
-    auto r2 = 0u;
+    auto r1 = 0U;
+    auto r2 = 0U;
     const std::regex regex{"([0-9]+)x([0-9]+)x([0-9]+)"};
     std::smatch match;
     for (const auto &s : in) {
@@ -110,22 +86,25 @@ void solve2(const std::vector<std::string> &in)
     std::cout << "2_2: " << r2 << std::endl;
 }
 
-void solve3(const std::string &in)
+void solve3(const std::vector<std::string> &in)
 {
-    std::cout << "3_1: " << visitedHousesBySanta(in) << std::endl;
-    std::cout << "3_2: " << visitedHousesBySantaAndRobot(in) << std::endl;
+    std::cout << "3_1: " << visitedHousesBySanta(in.front()) << std::endl;
+    std::cout << "3_2: " << visitedHousesBySantaAndRobot(in.front()) << std::endl;
 }
 
-void solve4(const std::string &in)
+void solve4(const std::vector<std::string> &in)
 {
-    std::cout << "4_1: " << miningNumber(in, 5) << std::endl;
-    std::cout << "4_2: " << miningNumber(in, 6) << std::endl;
+    constexpr auto firstZeroes{5U};
+//    constexpr auto secondZeroes{6U};
+
+    std::cout << "4_1: " << miningNumber(in.front(), firstZeroes) << std::endl;
+    std::cout << "4_2: " << miningNumber(in.front(), 6u) << std::endl;
 }
 
 void solve5(const std::vector<std::string> &in)
 {
-    auto r1 = 0u;
-    auto r2 = 0u;
+    auto r1 = 0U;
+    auto r2 = 0U;
     for (const auto &s : in) {
         if (isNice(s)) {
             ++r1;
@@ -140,6 +119,11 @@ void solve5(const std::vector<std::string> &in)
 
 void solve6(const std::vector<std::string> &in)
 {
+    constexpr auto action{1};
+    constexpr auto firstIndexX{2};
+    constexpr auto firstIndexY{3};
+    constexpr auto secondIndexX{4};
+    constexpr auto secondIndexY{5};
     std::regex regex("(turn on|toggle|turn off) ([0-9]*),([0-9]*) through ([0-9]*),([0-9]*)");
     std::smatch match;
     auto lg = createLightsGrid(LightsGridSize, LightsGridSize);
@@ -147,15 +131,15 @@ void solve6(const std::vector<std::string> &in)
     for (const auto &s : in) {
         std::regex_match(s, match, regex);
         LightInstruction li{LightInstruction::On};
-        if(match[1] == "turn on") {
+        if(match[action] == "turn on") {
             li = LightInstruction::On;
-        } else if (match[1] == "turn off") {
+        } else if (match[action] == "turn off") {
             li = LightInstruction::Off;
         } else { 
             li = LightInstruction::Toggle;
         }
-        Point from{std::stoul(match[2]), std::stoul(match[3])};
-        Point to{std::stoul(match[4]), std::stoul(match[5])};
+        Point from{std::stoul(match[firstIndexX]), std::stoul(match[firstIndexY])};
+        Point to{std::stoul(match[secondIndexX]), std::stoul(match[secondIndexY])};
         doLights(li, lg, from, to);
         doLights(li, blg, from, to);
     }
@@ -181,9 +165,9 @@ void solve7(const std::vector<std::string> &in)
 
 void solve8(const std::vector<std::string> &in)
 {
-    auto memoryChars{0u};
-    auto totalEncodedChars{0u};
-    auto totalChars{0u};
+    auto memoryChars{0U};
+    auto totalEncodedChars{0U};
+    auto totalChars{0U};
     for (const auto &s : in) {
         memoryChars += countCharacters(s);
         totalEncodedChars += countEncodedChars(s);
@@ -199,11 +183,11 @@ void solve9(const std::vector<std::string> &in)
     std::cout << "9_2: " << longestDistance(in) << std::endl;
 }
 
-void solve10(const std::string &in)
+void solve10(const std::vector<std::string> &in)
 {
-    constexpr auto fortyTimes {40u};
-    constexpr auto fiftyTimes {50u};
-    auto s = in;
+    constexpr auto fortyTimes {40U};
+    constexpr auto fiftyTimes {50U};
+    auto s = in.front();
     for (size_t i = 0; i < fortyTimes; ++i) {
         s = lookAndSay(s);
     }

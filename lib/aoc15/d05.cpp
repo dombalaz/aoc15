@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-bool containsAtLeast3Vowels(const std::string &in)
+auto containsAtLeast3Vowels(const std::string &in) -> bool
 {
     const std::string vowels{"aeiou"};
     auto count{0};
@@ -17,7 +17,7 @@ bool containsAtLeast3Vowels(const std::string &in)
     return false;
 }
 
-bool containsOneLetterTwiceInRow(const std::string &in)
+auto containsOneLetterTwiceInRow(const std::string &in) -> bool
 {
     for(size_t i = 1; i < in.size(); ++i) {
         if(in.at(i - 1) == in.at(i)) {
@@ -27,7 +27,7 @@ bool containsOneLetterTwiceInRow(const std::string &in)
     return false;
 }
 
-bool doesntContainsTheStrings(const std::string &in)
+auto doesntContainsTheStrings(const std::string &in) -> bool
 {
     const std::vector<std::string> strings{"ab", "cd", "pq", "xy"};
     for (const auto &s : strings) {
@@ -38,15 +38,18 @@ bool doesntContainsTheStrings(const std::string &in)
     return true;
 }
 
-bool isNice(const std::string &in)
+auto isNice(const std::string &in) -> bool
 {
     return containsAtLeast3Vowels(in) && containsOneLetterTwiceInRow(in) && doesntContainsTheStrings(in);
 }
 
-bool twoPairsOfTwoLetters(const std::string &in)
+auto twoPairsOfTwoLetters(const std::string &in) -> bool
 {
-    int top = in.size() - 2;
-    for(int i = 1; i < top; ++i) {
+    if (in.size() < 2) {
+        return false;
+    }
+    auto top = in.size() - 2;
+    for(auto i = 1U; i < top; ++i) {
         if (in.substr(i + 1).find(in.substr(i - 1, 2)) != std::string::npos) {
 	    return true;
 	}
@@ -54,7 +57,7 @@ bool twoPairsOfTwoLetters(const std::string &in)
     return false;
 }
 
-bool repeatedLetterWithLetterBetween(const std::string &in)
+auto repeatedLetterWithLetterBetween(const std::string &in) -> bool
 {
     for (size_t i = 2; i < in.size(); ++i) {
         if (in.at(i) == in.at(i - 2)) {
@@ -64,7 +67,7 @@ bool repeatedLetterWithLetterBetween(const std::string &in)
     return false;
 }
 
-bool isNice2(const std::string &in)
+auto isNice2(const std::string &in) -> bool
 {
     return twoPairsOfTwoLetters(in) && repeatedLetterWithLetterBetween(in);
 }

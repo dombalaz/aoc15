@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <numeric>
 
-LightsGrid createLightsGrid(size_t width, size_t height, bool init)
+auto createLightsGrid(size_t width, size_t height, bool init) -> LightsGrid
 {
     return LightsGrid(height, std::vector<bool>(width, init));
 }
@@ -50,12 +50,12 @@ void toggleLights(LightsGrid &lg, const Point &from, const Point &to)
     }
 }
 
-size_t countLightsOn(const LightsGrid &lg)
+auto countLightsOn(const LightsGrid &lg) -> size_t
 {
     return std::accumulate(lg.begin(), lg.end(), 0, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::count(rhs.begin(), rhs.end(), true); });
 }
 
-BLightsGrid createBLightsGrid(size_t width, size_t height, size_t init)
+auto createBLightsGrid(size_t width, size_t height, size_t init) -> BLightsGrid
 {
     return BLightsGrid(height, std::vector<size_t>(width, init));
 }
@@ -103,7 +103,7 @@ void toggleLights(BLightsGrid &blg, const Point &from, const Point &to)
     turnLightsOn(blg, from, to);
 }
 
-size_t totalBrightness(const BLightsGrid &blg)
+auto totalBrightness(const BLightsGrid &blg) -> size_t
 {
-    return std::accumulate(blg.begin(), blg.end(), 0, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::accumulate(rhs.begin(), rhs.end(), 0); });
+    return std::accumulate(blg.begin(), blg.end(), 0UL, [](const auto &lhs, const auto &rhs) -> size_t { return lhs + std::accumulate(rhs.begin(), rhs.end(), 0UL); });
 }

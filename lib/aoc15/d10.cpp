@@ -1,6 +1,6 @@
 #include <aoc15/d10.h>
 
-std::string lookAndSay(const std::string &s)
+auto lookAndSay(const std::string &s) -> std::string
 {
     if (s.empty()) {
         return {};

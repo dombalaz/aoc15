@@ -3,8 +3,8 @@
 
 #include <string>
 
-size_t countCharacters(const std::string &s);
+auto countCharacters(const std::string &s) -> size_t;
 
-size_t countEncodedChars(const std::string &s);
+auto countEncodedChars(const std::string &s) -> size_t;
 
 #endif // AOC15_D08_H

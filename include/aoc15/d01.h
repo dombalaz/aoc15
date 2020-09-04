@@ -6,7 +6,7 @@
 /*
  * Get floor that Santa was taken to.
  */
-int getFloor(const std::string &in);
+auto getFloor(const std::string &in) -> int;
 
 
 /*
@@ -14,7 +14,7 @@ int getFloor(const std::string &in);
  * 
  * If basement is not reached, returns -1.
  */
-int getIndexOfFirstBasement(const std::string &in);
+auto getIndexOfFirstBasement(const std::string &in) -> int;
 
 #endif // AOC15_D01_H
 

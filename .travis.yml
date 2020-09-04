@@ -32,10 +32,10 @@ jobs:
         - gcc
       before_install:
         - sudo apt-get -y update
-        - sudo apt-get install clang-tidy libgtest-dev
+        - sudo apt-get install clang-tidy
       script:
         - mkdir build && cd build
-        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--warnings-as-errors=*" ../
+        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
         - make
 
     - stage: build
@@ -44,7 +44,7 @@ jobs:
         - gcc
       before_install:
         - sudo apt-get -y update
-        - sudo apt-get install cppcheck libgtest-dev
+        - sudo apt-get install cppcheck
       script:
         - mkdir build && cd build
         - cmake "-DCMAKE_CXX_CPPCHECK=cppcheck;--std=c++17;--error-exitcode=1" ../
