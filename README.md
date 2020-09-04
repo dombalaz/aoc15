@@ -22,7 +22,7 @@ This is the progress of how am I doing:
 | [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)| :star2: |
 | [Day 8: Matchsticks](https://adventofcode.com/2015/day/8)| :star2: |
 | [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)| :star2: |
-| [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)| :white_medium_square: |
+| [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)| :star2: |
 | [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11)| :white_medium_square: |
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)| :white_medium_square: |
 | [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)| :white_medium_square: |
