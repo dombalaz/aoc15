@@ -1,6 +1,6 @@
 #include <aoc15/d01.h>
 
-auto getFloor(const std::string &in) -> int
+int getFloor(const std::string &in)
 {
     int r{0};
     for (const auto &c : in) {
