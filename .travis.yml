@@ -6,16 +6,6 @@ stages:
   - build
   - test
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-10
-      - gcc-10
-env:
-  - CC=gcc-10
-  - CXX=g++-10
 
 jobs:
   include:
@@ -23,6 +13,16 @@ jobs:
       name: GCC
       compiler:
         - gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-10
+            - gcc-10
+      env:
+        - CC=gcc-10
+        - CC=g++-10
       script:
         - mkdir build && cd build
         - cmake ../
