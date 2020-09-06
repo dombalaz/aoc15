@@ -28,8 +28,6 @@ jobs:
 
     - stage: build
       name: Clang
-      compiler:
-        - clang
       addons:
         apt:
           sources:
@@ -47,8 +45,6 @@ jobs:
 
     - stage: build
       name: Clang-Tidy
-      compiler:
-        - clang
       addons:
         apt:
           sources:
