@@ -30,9 +30,16 @@ jobs:
       name: Clang-Tidy
       compiler:
         - gcc
-      before_install:
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-focal-10
+          packages:
+            - clang-10
       script:
         - mkdir build && cd build
+        - clang-tidy --version
         - clang-tidy --dump-config
         - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
         - make
