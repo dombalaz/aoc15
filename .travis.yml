@@ -48,7 +48,18 @@ jobs:
     - stage: build
       name: Clang-Tidy
       compiler:
-        - gcc
+        - clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-bionic-10
+          packages:
+            - clang-10
+            - clang-tidy-10
+      env:
+        - CC=clang-10
+        - CXX=clang++-10
       script:
         - mkdir build && cd build
         - clang-tidy --version
