@@ -32,7 +32,8 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-bionic-11
+            - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-bionic-11 main'
+            - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-bionic-11 main'
           packages:
             - clang-11
       env:
