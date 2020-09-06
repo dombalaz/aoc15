@@ -10,7 +10,7 @@ stages:
 jobs:
   include:
     - stage: build
-      name: GCC
+      name: GCC-10
       addons:
         apt:
           sources:
@@ -27,14 +27,17 @@ jobs:
         - make
 
     - stage: build
-      name: Clang
+      name: Clang-11
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-bionic-11
           packages:
-            - clang-10
+            - clang-11
       env:
-        - CC=clang-10
-        - CXX=clang++-10
+        - CC=clang-11
+        - CXX=clang++-11
       script:
         - mkdir build && cd build
         - cmake ../
