@@ -30,8 +30,6 @@ jobs:
       name: Clang
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - clang-10
       env:
