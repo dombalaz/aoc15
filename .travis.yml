@@ -32,7 +32,6 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-bionic-10
           packages:
             - clang-10
       env:
