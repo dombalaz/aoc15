@@ -31,13 +31,10 @@ jobs:
       compiler:
         - gcc
       before_install:
-        - sudo apt-get -y update && sudo apt-get -y upgrade
-        - sudo apt-get install clang-tidy clang llvm-10-dev
-        - which clang-tidy
-        - ls /usr/bin
       script:
         - mkdir build && cd build
-        - cmake "-DCMAKE_CXX_CLANG_TIDY=/usr/bin/clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
+        - clang-tidy --dump-config
+        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy;--header-filter=.*;--warnings-as-errors=*" ../
         - make
 
     - stage: build
