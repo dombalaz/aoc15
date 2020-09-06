@@ -22,7 +22,7 @@ jobs:
             - gcc-10
       env:
         - CC=gcc-10
-        - CC=g++-10
+        - CXX=g++-10
       script:
         - mkdir build && cd build
         - cmake ../
