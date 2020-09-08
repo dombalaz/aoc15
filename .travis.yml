@@ -1,6 +1,6 @@
 language: cpp
 os: linux
-dist: bionic
+dist: focal
 
 stages:
   - build
@@ -9,6 +9,23 @@ stages:
 
 jobs:
   include:
+    - stage: build
+      name: GCC-9
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-9
+            - gcc-9
+      env:
+        - CC=gcc-9
+        - CXX=g++-9
+      script:
+        - mkdir build && cd build
+        - cmake ../
+        - make
+
     - stage: build
       name: GCC-10
       addons:
@@ -27,14 +44,33 @@ jobs:
         - make
 
     - stage: build
+      name: Clang-10
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+            - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main'
+          packages:
+            - clang-10
+      env:
+        - CC=clang-10
+        - CXX=clang++-10
+      script:
+        - mkdir build && cd build
+        - cmake ../
+        - make
+
+    - stage: build
       name: Clang-11
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - sourceline: 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main'
+            - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
-            - sourceline: 'deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main'
+            - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
           packages:
             - clang-11
       env:
@@ -51,19 +87,19 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - sourceline: 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main'
+            - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
-            - sourceline: 'deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main'
+            - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
           packages:
-            - clang-11 clang-tidy-11
+            - clang-10 clang-tidy-10
       env:
-        - CC=clang-11
-        - CXX=clang++-11
+        - CC=clang-10
+        - CXX=clang++-10
       script:
         - mkdir build && cd build
         - clang-tidy --version
         - clang-tidy --dump-config
-        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy-11;--header-filter=.*;--warnings-as-errors=*" ../
+        - cmake "-DCMAKE_CXX_CLANG_TIDY=clang-tidy-10;--header-filter=.*;--warnings-as-errors=*" ../
         - make
 
     - stage: build
