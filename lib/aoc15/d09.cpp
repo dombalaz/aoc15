@@ -1,14 +1,14 @@
 #include <aoc15/d09.h>
 
-#include <set>
-#include <regex>
 #include <iostream>
+#include <regex>
+#include <set>
 
 const std::regex regex{"([a-zA-Z]+) to ([a-zA-Z]+) = ([0-9]+)"};
 
 std::map<std::pair<std::string, std::string>, size_t> distances;
 
-size_t shortestDistance(const std::vector<std::string> &v)
+auto shortestDistance(const std::vector<std::string> &v) -> size_t
 {
     std::set<std::string> set;
     std::smatch match;
@@ -28,8 +28,8 @@ size_t shortestDistance(const std::vector<std::string> &v)
     auto shortestDistance = std::numeric_limits<size_t>::max();
     std::sort(perms.begin(), perms.end());
     do {
-        auto r{0u};
-        for (auto i = 0u; i < perms.size() - 1; ++i) {
+        auto r{0U};
+        for (auto i = 0U; i < perms.size() - 1; ++i) {
             r += distances[{perms.at(i), perms.at(i + 1)}];
         }
         if (r < shortestDistance) {
@@ -40,7 +40,7 @@ size_t shortestDistance(const std::vector<std::string> &v)
     return shortestDistance;
 }
 
-size_t longestDistance(const std::vector<std::string> &v)
+auto longestDistance(const std::vector<std::string> &v) -> size_t
 {
     std::set<std::string> set;
     std::smatch match;
@@ -57,11 +57,11 @@ size_t longestDistance(const std::vector<std::string> &v)
     }
     std::vector<std::string> perms(set.begin(), set.end());
     auto orig = perms;
-    auto shortestDistance = 0u;
+    auto shortestDistance = 0U;
     std::sort(perms.begin(), perms.end());
     do {
-        auto r{0u};
-        for (auto i = 0u; i < perms.size() - 1; ++i) {
+        auto r{0U};
+        for (auto i = 0U; i < perms.size() - 1; ++i) {
             r += distances[{perms.at(i), perms.at(i + 1)}];
         }
         if (r > shortestDistance) {

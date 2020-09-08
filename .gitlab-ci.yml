@@ -1,42 +1,97 @@
+.gcc_before_script: &gcc_before_script
+  - apt-get update
+  - apt-get -y install cmake libssl-dev libgtest-dev
+
+.clang_before_script: &clang_before_script
+  - apt-get update
+  - apt-get -y install cmake libssl-dev libgtest-dev wget gnupg
+
+.build_script: &build_script
+  - mkdir build
+  - cd build
+  - cmake ../
+  - make
+
 stages:
   - build
   - test
+  - static-analysis
 
-build_gcc:
+gcc-9:
   stage: build
-  image: gcc
+  image: gcc:9
   before_script:
-    - apt-get update
-    - apt-get install -y cmake libssl-dev
+    - *gcc_before_script
   script:
-    - mkdir build
-    - cd build
-    - cmake ../
-    - make
+    - *build_script
 
-build_clang:
+gcc-10:
+  stage: build
+  image: gcc:10
+  before_script:
+    - *gcc_before_script
+  script:
+    - *build_script
+
+clang-10:
   stage: build
   image: ubuntu:focal
   before_script:
+    - *clang_before_script
+    - echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
+    - echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
+    - wget -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | apt-key add -
     - apt-get update
-    - apt-get install -y clang cmake libssl-dev
+    - apt-get -y install clang-10
+    - export CC=clang-10
+    - export CXX=clang++-10
   script:
-    - mkdir build
-    - cd build
-    - cmake ../
-    - make
+    - *build_script
 
-test_gtest:
+clang-11:
+  stage: build
+  image: ubuntu:focal
+  before_script:
+    - *clang_before_script
+    - echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a /etc/apt/sources.list
+    - echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main" | tee -a /etc/apt/sources.list
+    - wget -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | apt-key add -
+    - apt-get update
+    - apt-get -y install clang-11
+    - export CC=clang-11
+    - export CXX=clang++-11
+  script:
+    - *build_script
+
+unit_tests:
   stage: test
   image: mink0/gtest
   before_script:
     - apk add openssl-dev
   script:
-    - mkdir build
-    - cd build
-    - cmake ../
-    - make check
+    - *build_script
+    - make test
   artifacts:
     reports:
       junit:
         - build/test/*-report.xml
+
+# Dont check gtest files. Fix later.
+clang-tidy:
+  stage: static-analysis
+  image: ubuntu:focal
+  before_script:
+    - apt-get update
+    - apt-get -y install cmake libssl-dev wget gnupg
+    - echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
+    - echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
+    - wget -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | apt-key add -
+    - apt-get update
+    - apt-get -y install clang-10 clang-tidy-10
+    - export CC=clang-10
+    - export CXX=clang++-10
+  script:
+    - mkdir build
+    - cd build
+    - cmake  "-DCMAKE_CXX_CLANG_TIDY=clang-tidy-10;--warnings-as-errors=*;--header-filter=.*" ../
+    - make

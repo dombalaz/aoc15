@@ -1,11 +1,11 @@
 #include <aoc15/d07.h>
 
-#include <regex>
 #include <iostream>
+#include <regex>
 
 const std::regex regex("([0-9]*|[a-z]*)[ ]?(AND|OR|LSHIFT|RSHIFT|NOT) ([0-9]+|[a-z]+)|[0-9]+|[a-z]+");
 
-std::uint16_t signalOnWire(const std::string &wire, Circuit &c)
+auto signalOnWire(const std::string &wire, Circuit &c) -> std::uint16_t
 {
     // Wire can be number so it is not present in map and therefore return it.
     if (c.find(wire) == c.end()) {

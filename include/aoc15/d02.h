@@ -5,11 +5,11 @@
 
 using uint = std::uint32_t;
 
-uint paperForGift(uint x, uint y, uint z);
+auto paperForGift(uint x, uint y, uint z) -> uint;
 
-uint areaOfSmallest(uint x, uint y, uint z);
+auto areaOfSmallest(uint x, uint y, uint z) -> uint;
 
-uint ribbonForGift(uint x, uint y, uint z);
+auto ribbonForGift(uint x, uint y, uint z) -> uint;
 
 #endif // AOC15_D02_H
 

@@ -3,6 +3,6 @@
 
 #include <string>
 
-std::string lookAndSay(const std::string &s);
+auto lookAndSay(const std::string &s) -> std::string;
 
 #endif // AOC15_D10_H

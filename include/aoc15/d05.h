@@ -4,18 +4,18 @@
 #include <string>
 #include <vector>
 
-bool containsAtLeast3Vowels(const std::string &in);
+auto containsAtLeast3Vowels(const std::string &in) -> bool;
 
-bool containsOneLetterTwiceInRow(const std::string &in);
+auto containsOneLetterTwiceInRow(const std::string &in) -> bool;
 
-bool doesntContainsTheStrings(const std::string &in);
+auto doesntContainsTheStrings(const std::string &in) -> bool;
 
-bool isNice(const std::string &in);
+auto isNice(const std::string &in) -> bool;
 
-bool twoPairsOfTwoLetters(const std::string &in);
+auto twoPairsOfTwoLetters(const std::string &in) -> bool;
 
-bool repeatedLetterWithLetterBetween(const std::string &in); 
+auto repeatedLetterWithLetterBetween(const std::string &in) -> bool;
 
-bool isNice2(const std::string &in);
+auto isNice2(const std::string &in) -> bool;
 
 #endif // AOC15_D05_H

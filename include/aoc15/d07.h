@@ -6,6 +6,6 @@
 
 using Circuit = std::map<std::string, std::string>;
 
-std::uint16_t signalOnWire(const std::string &wire, Circuit &c);
+auto signalOnWire(const std::string &wire, Circuit &c) -> std::uint16_t;
 
 #endif // AOC15_D07_H

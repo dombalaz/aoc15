@@ -1,10 +1,10 @@
 #include <aoc15/d03.h>
 
-#include <utility>
 #include <set>
+#include <utility>
 #include <vector>
 
-uint visitedHousesBySanta(const std::string &in)
+auto visitedHousesBySanta(const std::string &in) -> uint
 {
     std::set<std::pair<int, int>> grid{{0, 0}};
     int x{0};
@@ -29,7 +29,7 @@ uint visitedHousesBySanta(const std::string &in)
     return grid.size();
 }
 
-uint visitedHousesBySantaAndRobot(const std::string &in)
+auto visitedHousesBySantaAndRobot(const std::string &in) -> uint
 {
     std::set<std::pair<int, int>> grid{{0, 0}};
     std::vector<std::pair<int, int>> cs{{0, 0}, {0, 0}};
