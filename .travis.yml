@@ -13,8 +13,6 @@ jobs:
       name: GCC-9
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - g++-9
             - gcc-9
@@ -30,8 +28,6 @@ jobs:
       name: GCC-10
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - g++-10
             - gcc-10
@@ -48,7 +44,6 @@ jobs:
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
             - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
             - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main'
@@ -67,7 +62,6 @@ jobs:
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
             - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
             - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
@@ -86,7 +80,6 @@ jobs:
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
             - sourceline: 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
             - sourceline: 'deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main'
@@ -106,8 +99,6 @@ jobs:
       name: Cppcheck
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - g++-10
             - gcc-10
@@ -124,8 +115,6 @@ jobs:
       name: Unit test
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - g++-10
             - gcc-10
