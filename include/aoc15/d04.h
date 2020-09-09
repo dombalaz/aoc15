@@ -3,6 +3,6 @@
 
 #include <string>
 
-int miningNumber(const std::string &key, size_t leadingZeroes);
+auto miningNumber(const std::string &key, size_t leadingZeroes) -> int;
 
 #endif // AOC15_D04_H

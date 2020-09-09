@@ -1,19 +1,20 @@
 #include <aoc15/d04.h>
-#include <openssl/md5.h>
 #include <climits>
 #include <iomanip>
+#include <openssl/md5.h>
 
-int miningNumber(const std::string &key, size_t leadingZeroes)
+auto miningNumber(const std::string &key, size_t leadingZeroes) -> int
 {
-    unsigned char out[MD5_DIGEST_LENGTH]{};
+    std::array<unsigned char, MD5_DIGEST_LENGTH> out{};
     for(auto i = 0; i < INT_MAX; ++i) {
-        auto in{key + std::to_string(i)};
-        MD5(reinterpret_cast<const unsigned char *>(in.c_str()), in.size(), out);
+        auto tmp{key + std::to_string(i)};
+        std::basic_string<unsigned char> in(tmp.begin(), tmp.end());
+        MD5(in.data(), in.size(), out.data());
 
         std::stringstream ss;
-        for(auto j = 0; j < MD5_DIGEST_LENGTH; ++j) {
+        for(unsigned char j : out) {
             ss << std::setfill('0') << std::setw(2) << std::hex;
-            ss << static_cast<size_t>(out[j]);
+            ss << static_cast<size_t>(j);
         }
         auto cmpstr{ss.str().substr(0, leadingZeroes)};
         if(cmpstr == std::string(leadingZeroes, '0')) {

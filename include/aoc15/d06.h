@@ -11,13 +11,13 @@ enum class LightInstruction
     Toggle
 };
 
-constexpr auto LightsGridSize{1000u};
+constexpr auto LightsGridSize{1000U};
 
 using LightsGrid = std::vector<std::vector<bool>>;
 
 using Point = std::pair<size_t, size_t>;
 
-LightsGrid createLightsGrid(size_t width, size_t height, bool init = false);
+auto createLightsGrid(size_t width, size_t height, bool init = false) -> LightsGrid;
 
 void doLights(LightInstruction li, LightsGrid &lg, const Point &from, const Point &to);
 
@@ -27,11 +27,11 @@ void turnLightsOff(LightsGrid &lg, const Point &from, const Point &to);
 
 void toggleLights(LightsGrid &lg, const Point &from, const Point &to);
 
-size_t countLightsOn(const LightsGrid &lg);
+auto countLightsOn(const LightsGrid &lg) -> size_t;
 
 using BLightsGrid = std::vector<std::vector<size_t>>;
 
-BLightsGrid createBLightsGrid(size_t width, size_t height, size_t init = 0);
+auto createBLightsGrid(size_t width, size_t height, size_t init = 0) -> BLightsGrid;
 
 void doLights(LightInstruction li, BLightsGrid &blg, const Point &from, const Point &to);
 
@@ -41,7 +41,7 @@ void turnLightsOff(BLightsGrid &blg, const Point &from, const Point &to);
 
 void toggleLights(BLightsGrid &blg, const Point &from, const Point &to);
 
-size_t totalBrightness(const BLightsGrid &blg);
+auto totalBrightness(const BLightsGrid &blg) -> size_t;
 
 #endif // AOC15_D06_H
 

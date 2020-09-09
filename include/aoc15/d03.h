@@ -6,8 +6,8 @@
 
 using uint = std::uint32_t;
 
-uint visitedHousesBySanta(const std::string &in);
+auto visitedHousesBySanta(const std::string &in) -> uint;
 
-uint visitedHousesBySantaAndRobot(const std::string &in);
+auto visitedHousesBySantaAndRobot(const std::string &in) -> uint;
 
 #endif // AOC15_D03_H

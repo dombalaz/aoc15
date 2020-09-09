@@ -2,17 +2,17 @@
 
 #include <algorithm>
 
-uint paperForGift(uint x, uint y, uint z)
+auto paperForGift(uint x, uint y, uint z) -> uint
 {
     return 2 * (x * y + x * z + y * z) + areaOfSmallest(x, y, z);
 }
 
-uint areaOfSmallest(uint x, uint y, uint z)
+auto areaOfSmallest(uint x, uint y, uint z) -> uint
 {
     return std::min({x * y, x * z, y * z});
 }
 
-uint ribbonForGift(uint x, uint y, uint z)
+auto ribbonForGift(uint x, uint y, uint z) -> uint
 {
     return 2 * (x + y + z - std::max({x, y, z})) + x * y * z;
 }

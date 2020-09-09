@@ -1,11 +1,11 @@
 #include <aoc15/d08.h>
 
-size_t countCharacters(const std::string &s)
+auto countCharacters(const std::string &s) -> size_t
 {
     // I expect first and last chars to be '"' so not checking this.
-    auto r = 0u;
+    auto r = 0U;
     auto top = s.size() - 1;
-    for (auto i = 1u; i < top; ++i) {
+    for (auto i = 1U; i < top; ++i) {
         if (s.at(i) == '\\') {
             if (s.at(i + 1) == '\\' || s.at(i + 1) == '\"') {
                 ++i;
@@ -18,11 +18,11 @@ size_t countCharacters(const std::string &s)
     return r;
 }
 
-size_t countEncodedChars(const std::string &s)
+auto countEncodedChars(const std::string &s) -> size_t
 {
     auto top = s.size() - 1;
-    auto countSpecial{0u};
-    for (auto i = 1u; i < top; ++i) {
+    auto countSpecial{0U};
+    for (auto i = 1U; i < top; ++i) {
         if (s.at(i) == '\\') {
             if (s.at(i + 1) == '\\' || s.at(i + 1) == '\"') {
                 ++i;

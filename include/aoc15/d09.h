@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-size_t shortestDistance(const std::vector<std::string> &v);
+auto shortestDistance(const std::vector<std::string> &v) -> size_t;
 
-size_t longestDistance(const std::vector<std::string> &v);
+auto longestDistance(const std::vector<std::string> &v) -> size_t;
 
 #endif // AOC15_D09_H
