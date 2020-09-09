@@ -95,3 +95,13 @@ clang-tidy:
     - cd build
     - cmake  "-DCMAKE_CXX_CLANG_TIDY=clang-tidy-10;--warnings-as-errors=*;--header-filter=.*" ../
     - make
+
+# Check if this commit has introduced bad whitespace.
+git-diff-check:
+  stage: static-analysis
+  image: ubuntu:focal
+  before_script:
+    - apt-get update
+    - apt-get -y install git
+  script:
+    - git diff --check HEAD~1
