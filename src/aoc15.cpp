@@ -5,7 +5,7 @@
 
 #include <aoc15/aoc15.h>
 
-constexpr auto LastSolvedDay{10};
+constexpr auto LastSolvedDay{11};
 
 void solve1(const std::vector<std::string> &in);
 
@@ -27,6 +27,8 @@ void solve9(const std::vector<std::string> &in);
 
 void solve10(const std::vector<std::string> &in);
 
+void solve11(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -37,7 +39,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve7,
     solve8,
     solve9,
-    solve10
+    solve10,
+    solve11
 };
 
 auto main(int argc, char **argv) -> int
@@ -215,4 +218,11 @@ void solve10(const std::vector<std::string> &in)
         s = lookAndSay(s);
     }
     std::cout << "10_2: " << s.size() << std::endl;
+}
+
+void solve11(const std::vector<std::string> &in)
+{
+    auto r = nextValidPass(in.front());
+    std::cout << "11_1: " << r << std::endl;
+    std::cout << "11_2: " << nextValidPass(r) << std::endl;
 }

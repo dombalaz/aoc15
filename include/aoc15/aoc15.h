@@ -11,5 +11,6 @@
 #include "d08.h"
 #include "d09.h"
 #include "d10.h"
+#include "d11.h"
 
 #endif // AOC15_AOC15_H
