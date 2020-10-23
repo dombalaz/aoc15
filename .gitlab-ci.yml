@@ -14,8 +14,8 @@
 
 stages:
   - build
-  - test
   - static-analysis
+  - test
 
 gcc-9:
   stage: build
@@ -69,20 +69,6 @@ clang-11:
   script:
     - *build_script
 
-unit_tests:
-  stage: test
-  image: ubuntu:focal
-  before_script:
-    - *gcc_before_script
-    - apt-get -y install gcc g++
-  script:
-    - *build_script
-    - make test
-  artifacts:
-    reports:
-      junit:
-        - build/test/*-report.xml
-
 # Dont check gtest files. Fix later.
 clang-tidy:
   stage: static-analysis
@@ -130,3 +116,29 @@ cppcheck:
     - cd build
     - cmake "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON" ../
     - cppcheck --project=compile_commands.json --enable=all -q --std=c++17 --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unmatchedSuppression
+
+unit_tests:
+  stage: test
+  image: ubuntu:focal
+  before_script:
+    - *gcc_before_script
+    - apt-get -y install gcc g++
+  script:
+    - *build_script
+    - make test
+  artifacts:
+    reports:
+      junit:
+        - build/test/*-report.xml
+
+valgrind:
+    stage: test
+    image: ubuntu:focal
+    before_script:
+      - *gcc_before_script
+      - apt-get -y install gcc g++ valgrind
+    script:
+      - mkdir build
+      - cd build
+      - cmake ../
+      - make valgrind
