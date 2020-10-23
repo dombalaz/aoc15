@@ -1,10 +1,10 @@
 .gcc_before_script: &gcc_before_script
   - apt-get update
-  - apt-get -y install cmake libssl-dev libgtest-dev
+  - apt-get -y install cmake libssl-dev nlohmann-json3-dev libgtest-dev
 
 .clang_before_script: &clang_before_script
   - apt-get update
-  - apt-get -y install cmake libssl-dev libgtest-dev wget gnupg
+  - apt-get -y install cmake libssl-dev nlohmann-json3-dev libgtest-dev wget gnupg
 
 .build_script: &build_script
   - mkdir build
@@ -19,17 +19,23 @@ stages:
 
 gcc-9:
   stage: build
-  image: gcc:9
+  image: ubuntu:focal
   before_script:
     - *gcc_before_script
+    - apt-get -y install gcc-9 g++-9
+    - export CC="gcc-9"
+    - export CXX="g++-9"
   script:
     - *build_script
 
 gcc-10:
   stage: build
-  image: gcc:10
+  image: ubuntu:focal
   before_script:
     - *gcc_before_script
+    - apt-get -y install gcc-10 g++-10
+    - export CC="gcc-10"
+    - export CXX="g++-10"
   script:
     - *build_script
 
@@ -65,9 +71,10 @@ clang-11:
 
 unit_tests:
   stage: test
-  image: mink0/gtest
+  image: ubuntu:focal
   before_script:
-    - apk add openssl-dev
+    - *gcc_before_script
+    - apt-get -y install gcc g++
   script:
     - *build_script
     - make test
@@ -82,7 +89,7 @@ clang-tidy:
   image: ubuntu:focal
   before_script:
     - apt-get update
-    - apt-get -y install cmake libssl-dev wget gnupg
+    - apt-get -y install cmake libssl-dev nlohmann-json3-dev wget gnupg
     - echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
     - echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" | tee -a /etc/apt/sources.list
     - wget -O - "https://apt.llvm.org/llvm-snapshot.gpg.key" | apt-key add -
