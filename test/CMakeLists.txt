@@ -19,6 +19,8 @@ set(TARGETS
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
 
+add_custom_target(valgrind)
+
 foreach(target ${TARGETS})
     add_executable(${target} ${target}.cc)
     target_include_directories(
@@ -27,6 +29,9 @@ foreach(target ${TARGETS})
     target_include_directories(${target} PRIVATE ${GTEST_INCLUDE_DIRS})
     target_link_libraries(${target} aoc15 GTest::GTest GTest::Main)
     add_test(Test_${target} ${target} --gtest_output=xml:${target}-report.xml)
+
+    add_custom_target(valgrind_${target} COMMAND valgrind --leak-check=full -s --error-exitcode=1 ${CMAKE_CURRENT_BINARY_DIR}/${target} DEPENDS ${target})
+    add_dependencies(valgrind valgrind_${target})
 endforeach(target ${TARGETS})
 
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS ${TARGETS})
