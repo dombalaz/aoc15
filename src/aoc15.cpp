@@ -1,11 +1,12 @@
 #include <fstream>
 #include <iostream>
 #include <regex>
+#include <set>
 #include <vector>
 
 #include <aoc15/aoc15.h>
 
-constexpr auto LastSolvedDay{12};
+constexpr auto LastSolvedDay{13};
 
 void solve1(const std::vector<std::string> &in);
 
@@ -31,6 +32,8 @@ void solve11(const std::vector<std::string> &in);
 
 void solve12(const std::vector<std::string> &in);
 
+void solve13(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -43,7 +46,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve9,
     solve10,
     solve11,
-    solve12
+    solve12,
+    solve13
 };
 
 auto main(int argc, char **argv) -> int
@@ -234,4 +238,21 @@ void solve12(const std::vector<std::string> &in)
 {
     std::cout << "12_1: " << sumNumbersInJson(in.at(0)) << std::endl;
     std::cout << "12_2: " << sumNumbersInJson2(in.at(0)) << std::endl;
+}
+
+void solve13(const std::vector<std::string> &in)
+{
+    auto m = createPeopleHappinessMap(in);
+    std::cout << "13_1: " << optimalHappiness(m) << std::endl;
+
+    std::set<std::string> s;
+    for (const auto &kv : m) {
+        s.insert(kv.first.first);
+    }
+    const std::string me{"XXX"};
+    for (const auto &v : s) {
+        m.emplace(Key{v, me}, 0);
+        m.emplace(Key{me, v}, 0);
+    }
+    std::cout << "13_2: " << optimalHappiness(m) << std::endl;
 }
