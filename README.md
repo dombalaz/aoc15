@@ -26,7 +26,7 @@ This is the progress of how am I doing:
 | [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11)| :star2: |
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)| :star2: |
 | [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)| :star2: |
-| [Day 14: Reindeer Olympics](https://adventofcode.com/2015/day/14)| :white_medium_square: |
+| [Day 14: Reindeer Olympics](https://adventofcode.com/2015/day/14)| :star2: |
 | [Day 15: Science for Hungry People](https://adventofcode.com/2015/day/15)| :white_medium_square: |
 | [Day 16: Aunt Sue](https://adventofcode.com/2015/day/16)| :white_medium_square: |
 | [Day 17: No Such Thing as Too Much](https://adventofcode.com/2015/day/17)| :white_medium_square: |
