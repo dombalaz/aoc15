@@ -1,5 +1,4 @@
-#ifndef AOC15_D14_H
-#define AOC15_D14_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -34,5 +33,3 @@ auto createReindeers(const std::vector<std::string> &v) -> std::vector<Reindeer>
 auto winningDistance(const std::vector<Reindeer> &v, std::uint64_t s) -> std::uint64_t;
 
 auto winningPoints(const std::vector<Reindeer> &v, std::uint64_t s) -> std::uint64_t;
-
-#endif // AOC15_D14_H

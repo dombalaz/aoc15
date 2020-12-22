@@ -1,5 +1,4 @@
-#ifndef AOC15_D06_H
-#define AOC15_D06_H
+#pragma once
 
 #include <utility>
 #include <vector>
@@ -42,6 +41,3 @@ void turnLightsOff(BLightsGrid &blg, const Point &from, const Point &to);
 void toggleLights(BLightsGrid &blg, const Point &from, const Point &to);
 
 auto totalBrightness(const BLightsGrid &blg) -> size_t;
-
-#endif // AOC15_D06_H
-

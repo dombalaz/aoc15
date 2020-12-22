@@ -1,5 +1,4 @@
-#ifndef AOC15_D05_H
-#define AOC15_D05_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -17,5 +16,3 @@ auto twoPairsOfTwoLetters(const std::string &in) -> bool;
 auto repeatedLetterWithLetterBetween(const std::string &in) -> bool;
 
 auto isNice2(const std::string &in) -> bool;
-
-#endif // AOC15_D05_H

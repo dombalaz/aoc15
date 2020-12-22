@@ -1,8 +1,5 @@
-#ifndef AOC15_D10_H
-#define AOC15_D10_H
+#pragma once
 
 #include <string>
 
 auto lookAndSay(const std::string &s) -> std::string;
-
-#endif // AOC15_D10_H

@@ -1,5 +1,4 @@
-#ifndef AOC15_D02_H
-#define AOC15_D02_H
+#pragma once
 
 #include <cstdint>
 
@@ -10,6 +9,3 @@ auto paperForGift(uint x, uint y, uint z) -> uint;
 auto areaOfSmallest(uint x, uint y, uint z) -> uint;
 
 auto ribbonForGift(uint x, uint y, uint z) -> uint;
-
-#endif // AOC15_D02_H
-

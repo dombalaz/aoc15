@@ -1,5 +1,4 @@
-#ifndef AOC15_D13_H
-#define AOC15_D13_H
+#pragma once
 
 #include <string>
 #include <unordered_map>
@@ -17,5 +16,3 @@ using PeopleHappinessMap = std::unordered_map<Key, std::int64_t, KeyHash>;
 auto createPeopleHappinessMap(const std::vector<std::string> &v) -> PeopleHappinessMap;
 
 auto optimalHappiness(const PeopleHappinessMap &m) -> std::int64_t;
-
-#endif // AOC15_D13_H

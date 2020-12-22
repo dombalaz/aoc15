@@ -1,5 +1,4 @@
-#ifndef AOC15_AOC15_H
-#define AOC15_AOC15_H
+#pragma once
 
 #include "d01.h"
 #include "d02.h"
@@ -15,5 +14,3 @@
 #include "d12.h"
 #include "d13.h"
 #include "d14.h"
-
-#endif // AOC15_AOC15_H
