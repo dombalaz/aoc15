@@ -6,7 +6,7 @@
 
 #include <aoc15/aoc15.h>
 
-constexpr auto LastSolvedDay{14};
+constexpr auto LastSolvedDay{15};
 
 void solve1(const std::vector<std::string> &in);
 
@@ -36,6 +36,8 @@ void solve13(const std::vector<std::string> &in);
 
 void solve14(const std::vector<std::string> &in);
 
+void solve15(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -50,7 +52,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve11,
     solve12,
     solve13,
-    solve14
+    solve14,
+    solve15
 };
 
 auto main(int argc, char **argv) -> int
@@ -266,4 +269,12 @@ void solve14(const std::vector<std::string> &in)
     constexpr auto time{2503U};
     std::cout << "14_1: " << winningDistance(v, time) << std::endl;
     std::cout << "14_2: " << winningPoints(v, time) << std::endl;
+}
+
+void solve15(const std::vector<std::string> &in)
+{
+    constexpr auto targetCalories{500U};
+    auto v = createIngredients(in);
+    std::cout << "15_1: " <<  highestScoringCookie(v) << std::endl;
+    std::cout << "15_2: " <<  highestScoringCookie(v, targetCalories) << std::endl;
 }
