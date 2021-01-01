@@ -6,7 +6,7 @@
 
 #include <aoc15/aoc15.h>
 
-constexpr auto LastSolvedDay{15};
+constexpr auto LastSolvedDay{16};
 
 void solve1(const std::vector<std::string> &in);
 
@@ -38,6 +38,8 @@ void solve14(const std::vector<std::string> &in);
 
 void solve15(const std::vector<std::string> &in);
 
+void solve16(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -53,7 +55,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve12,
     solve13,
     solve14,
-    solve15
+    solve15,
+    solve16
 };
 
 auto main(int argc, char **argv) -> int
@@ -277,4 +280,13 @@ void solve15(const std::vector<std::string> &in)
     auto v = createIngredients(in);
     std::cout << "15_1: " <<  highestScoringCookie(v) << std::endl;
     std::cout << "15_2: " <<  highestScoringCookie(v, targetCalories) << std::endl;
+}
+
+void solve16(const std::vector<std::string> &in)
+{
+    // Here we return index in vector so we need to increment the result.
+    auto samples{createMfcsamCompoundsSamples(in)};
+    std::cout << "16_1: " << auntNumber(sample, samples) + 1 << "\n";
+
+    std::cout << "16_2: " << auntNumber(sample2, samples) + 1 << "\n";
 }
