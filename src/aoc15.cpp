@@ -6,8 +6,6 @@
 
 #include <aoc15/aoc15.h>
 
-constexpr auto LastSolvedDay{16};
-
 void solve1(const std::vector<std::string> &in);
 
 void solve2(const std::vector<std::string> &in);
@@ -40,6 +38,8 @@ void solve15(const std::vector<std::string> &in);
 
 void solve16(const std::vector<std::string> &in);
 
+void solve17(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -56,7 +56,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve13,
     solve14,
     solve15,
-    solve16
+    solve16,
+    solve17
 };
 
 auto main(int argc, char **argv) -> int
@@ -89,7 +90,7 @@ auto main(int argc, char **argv) -> int
         std::cerr << "Input is empty." << std::endl;
         return EXIT_FAILURE;
     }
-    if (d > LastSolvedDay || d == 0) {
+    if (d > Functions.size() || d == 0) {
         std::cerr << "The day " << d << " is not solved yet or is invalid." << std::endl;
         return EXIT_FAILURE;
     }
@@ -289,4 +290,11 @@ void solve16(const std::vector<std::string> &in)
     std::cout << "16_1: " << auntNumber(sample, samples) + 1 << "\n";
 
     std::cout << "16_2: " << auntNumber(sample2, samples) + 1 << "\n";
+}
+
+void solve17(const std::vector<std::string> &in)
+{
+    constexpr auto topSum{150U};
+    std::cout << "17_1: " << combinationsToTopSum(in, topSum) << "\n";
+    std::cout << "17_2: " << combinationsWithMinToTopSum(in, topSum) << "\n";
 }
