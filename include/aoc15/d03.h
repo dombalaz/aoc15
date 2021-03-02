@@ -1,10 +1,11 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <string_view>
 
-using uint = std::uint32_t;
+namespace Aoc15
+{
+auto solveD3P1(std::string_view in) -> std::uint32_t;
 
-auto visitedHousesBySanta(const std::string &in) -> uint;
-
-auto visitedHousesBySantaAndRobot(const std::string &in) -> uint;
+auto solveD3P2(std::string_view in) -> std::uint32_t;
+}

@@ -9,34 +9,34 @@ const std::vector<std::string> v
 
 TEST(Day14_Part1_Test, createReindeers)
 {
-    auto r = createReindeers(v);
+    auto r = Aoc15::createReindeers(v);
     ASSERT_EQ(r.size(), 2);
-    Reindeer comet{"Comet", 14, 10, 127};
-    Reindeer dancer{"Dancer", 16, 11, 162};
+    Aoc15::Reindeer comet{"Comet", 14, 10, 127};
+    Aoc15::Reindeer dancer{"Dancer", 16, 11, 162};
     EXPECT_EQ(r.at(0), comet);
     EXPECT_EQ(r.at(1), dancer);
 }
 
 TEST(Day14_Part1_Test, winningDistance)
 {
-    auto r = createReindeers(v);
-    EXPECT_EQ(winningDistance(r, 1000), 1120);
+    auto r = Aoc15::createReindeers(v);
+    EXPECT_EQ(Aoc15::winningDistance(r, 1000), 1120);
 }
 
 
 TEST(Day14_Part1_Test, basic)
 {
-    std::vector<Reindeer> reindeers{Reindeer("Commet", 1, 1, 1)};
-    EXPECT_EQ(winningDistance(reindeers, 0), 0);
-    EXPECT_EQ(winningDistance(reindeers, 1), 1);
-    EXPECT_EQ(winningDistance(reindeers, 2), 1);
+    std::vector<Aoc15::Reindeer> reindeers{Aoc15::Reindeer("Commet", 1, 1, 1)};
+    EXPECT_EQ(Aoc15::winningDistance(reindeers, 0), 0);
+    EXPECT_EQ(Aoc15::winningDistance(reindeers, 1), 1);
+    EXPECT_EQ(Aoc15::winningDistance(reindeers, 2), 1);
 
-    reindeers = {Reindeer("Comet", 1, 2, 1)};
-    EXPECT_EQ(winningDistance(reindeers, 4), 3);
+    reindeers = {Aoc15::Reindeer("Comet", 1, 2, 1)};
+    EXPECT_EQ(Aoc15::winningDistance(reindeers, 4), 3);
 }
 
 TEST(Day14_Part2_Test, winningPoints)
 {
-    auto r = createReindeers(v);
-    EXPECT_EQ(winningPoints(r, 1000), 689);
+    auto r = Aoc15::createReindeers(v);
+    EXPECT_EQ(Aoc15::winningPoints(r, 1000), 689);
 }

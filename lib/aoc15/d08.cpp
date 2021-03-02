@@ -1,9 +1,30 @@
 #include <aoc15/d08.h>
 
-auto countCharacters(const std::string &s) -> size_t
+auto Aoc15::solveD8P1(const std::vector<std::string> &in) -> size_t
 {
-    // I expect first and last chars to be '"' so not checking this.
-    auto r = 0U;
+    auto r{0U};
+    auto total{0U};
+    for (const auto &s : in) {
+        r += countCharacters(s);
+        total += s.size();
+    }
+    return total - r;
+}
+
+auto Aoc15::solveD8P2(const std::vector<std::string> &in) -> size_t
+{
+    auto r{0U};
+    auto total{0U};
+    for (const auto &s : in) {
+        r += countEncodedChars(s);
+        total += s.size();
+    }
+    return r - total;
+}
+
+auto Aoc15::countCharacters(std::string_view s) -> size_t
+{
+    auto r{0U};
     auto top = s.size() - 1;
     for (auto i = 1U; i < top; ++i) {
         if (s.at(i) == '\\') {
@@ -18,7 +39,7 @@ auto countCharacters(const std::string &s) -> size_t
     return r;
 }
 
-auto countEncodedChars(const std::string &s) -> size_t
+auto Aoc15::countEncodedChars(std::string_view s) -> size_t
 {
     auto top = s.size() - 1;
     auto countSpecial{0U};

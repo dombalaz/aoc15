@@ -1,3 +1,8 @@
+#include "aoc15/d09.h"
+#include "aoc15/d12.h"
+#include "aoc15/d13.h"
+#include "aoc15/d14.h"
+#include "aoc15/d15.h"
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -102,199 +107,103 @@ auto main(int argc, char **argv) -> int
 
 void solve1(const std::vector<std::string> &in)
 {
-    std::cout << "1_1: " << getFloor(in.front()) << std::endl;
-    std::cout << "1_2: " << getIndexOfFirstBasement(in.front()) << std::endl;
+    std::cout << "1_1: " << Aoc15::solveD1P1(in.front()) << std::endl;
+    std::cout << "1_2: " << Aoc15::solveD1P2(in.front()) << std::endl;
 }
 
 void solve2(const std::vector<std::string> &in)
 {
-    auto r1 = 0U;
-    auto r2 = 0U;
-    const std::regex regex{"([0-9]+)x([0-9]+)x([0-9]+)"};
-    std::smatch match;
-    for (const auto &s : in) {
-        std::regex_match(s, match, regex);
-        auto x = std::stoul(match[1]);
-        auto y = std::stoul(match[2]);
-        auto z = std::stoul(match[3]);
-        r1 += paperForGift(x, y, z);
-        r2 += ribbonForGift(x, y, z);
-    }
-    std::cout << "2_1: " << r1 << std::endl;
-    std::cout << "2_2: " << r2 << std::endl;
+    std::cout << "2_1: " << Aoc15::solveD2P1(in) << std::endl;
+    std::cout << "2_2: " << Aoc15::solveD2P2(in) << std::endl;
 }
 
 void solve3(const std::vector<std::string> &in)
 {
-    std::cout << "3_1: " << visitedHousesBySanta(in.front()) << std::endl;
-    std::cout << "3_2: " << visitedHousesBySantaAndRobot(in.front()) << std::endl;
+    std::cout << "3_1: " << Aoc15::solveD3P1(in.front()) << std::endl;
+    std::cout << "3_2: " << Aoc15::solveD3P2(in.front()) << std::endl;
 }
 
 void solve4(const std::vector<std::string> &in)
 {
-    constexpr auto TaskOneZeroes{5U};
-    constexpr auto TaskTwoZeroes{6U};
-
-    std::cout << "4_1: " << miningNumber(in.front(), TaskOneZeroes) << std::endl;
-    std::cout << "4_2: " << miningNumber(in.front(), TaskTwoZeroes) << std::endl;
+    std::cout << "4_1: " << Aoc15::solveD4P1(in.front()) << std::endl;
+    std::cout << "4_2: " << Aoc15::solveD4P2(in.front()) << std::endl;
 }
 
 void solve5(const std::vector<std::string> &in)
 {
-    auto r1 = 0U;
-    auto r2 = 0U;
-    for (const auto &s : in) {
-        if (isNice(s)) {
-            ++r1;
-        }
-        if (isNice2(s)) {
-            ++r2;
-        }
-    }
-    std::cout << "5_1: " << r1 << std::endl;
-    std::cout << "5_2: " << r2 << std::endl;
+    std::cout << "5_1: " << Aoc15::solveD5P1(in) << std::endl;
+    std::cout << "5_2: " << Aoc15::solveD5P2(in) << std::endl;
 }
 
 void solve6(const std::vector<std::string> &in)
 {
-    constexpr auto InstructionIndex{1U};
-    constexpr auto FirstPointXIndex{2U};
-    constexpr auto FirstPointYIndex{3U};
-    constexpr auto SecondPointXIndex{4U};
-    constexpr auto SecondPointYIndex{5U};
-
-    std::regex regex("(turn on|toggle|turn off) ([0-9]*),([0-9]*) through ([0-9]*),([0-9]*)");
-    std::smatch match;
-    auto lg = createLightsGrid(LightsGridSize, LightsGridSize);
-    auto blg = createBLightsGrid(LightsGridSize, LightsGridSize);
-    for (const auto &s : in) {
-        std::regex_match(s, match, regex);
-        LightInstruction li{LightInstruction::On};
-        if(match[InstructionIndex] == "turn on") {
-            li = LightInstruction::On;
-        } else if (match[1] == "turn off") {
-            li = LightInstruction::Off;
-        } else { 
-            li = LightInstruction::Toggle;
-        }
-        Point from{std::stoul(match[FirstPointXIndex]), std::stoul(match[FirstPointYIndex])};
-        Point to{std::stoul(match[SecondPointXIndex]), std::stoul(match[SecondPointYIndex])};
-        doLights(li, lg, from, to);
-        doLights(li, blg, from, to);
-    }
-    std::cout << "6_1: " << countLightsOn(lg) << std::endl;
-    std::cout << "6_2: " << totalBrightness(blg) << std::endl;
+    std::cout << "6_1: " << Aoc15::solveD6P1(in) << std::endl;
+    std::cout << "6_2: " << Aoc15::solveD6P2(in) << std::endl;
 }
 
 void solve7(const std::vector<std::string> &in)
 {
-    std::regex regex("([a-z0-9A-Z ]*) -> ([a-z]*)");
-    std::smatch match;
-    Circuit c1;
-    for (const auto &s : in) {
-        std::regex_match(s, match, regex);
-        c1.insert({match[2], match[1]});
-    }
-    auto c2 = c1;
-    auto r1 = signalOnWire("a", c1);
-    c2["b"] = std::to_string(r1);
-    std::cout << "7_1: " << r1 << std::endl;
-    std::cout << "7_2: " << signalOnWire("a", c2) << std::endl;
+    std::cout << "7_1: " << Aoc15::solveD7P1(in) << std::endl;
+    std::cout << "7_2: " << Aoc15::solveD7P2(in) << std::endl;
 }
 
 void solve8(const std::vector<std::string> &in)
 {
-    auto memoryChars{0U};
-    auto totalEncodedChars{0U};
-    auto totalChars{0U};
-    for (const auto &s : in) {
-        memoryChars += countCharacters(s);
-        totalEncodedChars += countEncodedChars(s);
-        totalChars += s.size();
-    }
-    std::cout << "8_1: " << totalChars - memoryChars << std::endl;
-    std::cout << "8_2: " << totalEncodedChars - totalChars << std::endl;
+    std::cout << "8_1: " << Aoc15::solveD8P1(in) << std::endl;
+    std::cout << "8_2: " << Aoc15::solveD8P2(in) << std::endl;
 }
 
 void solve9(const std::vector<std::string> &in)
 {
-    std::cout << "9_1: " << shortestDistance(in) << std::endl;
-    std::cout << "9_2: " << longestDistance(in) << std::endl;
+    std::cout << "9_1: " << Aoc15::solveD9P1(in) << std::endl;
+    std::cout << "9_2: " << Aoc15::solveD9P2(in) << std::endl;
 }
 
 void solve10(const std::vector<std::string> &in)
 {
-    constexpr auto fortyTimes {40U};
-    constexpr auto fiftyTimes {50U};
-    auto s = in.front();
-    for (size_t i = 0; i < fortyTimes; ++i) {
-        s = lookAndSay(s);
-    }
-    std::cout << "10_1: " << s.size() << std::endl;
-    for (size_t i = fortyTimes; i < fiftyTimes; ++i) {
-        s = lookAndSay(s);
-    }
-    std::cout << "10_2: " << s.size() << std::endl;
+    std::cout << "10_1: " << Aoc15::solveD10P1(in.front()) << std::endl;
+    std::cout << "10_2: " << Aoc15::solveD10P2(in.front()) << std::endl;
+
 }
 
 void solve11(const std::vector<std::string> &in)
 {
-    auto r = nextValidPass(in.front());
-    std::cout << "11_1: " << r << std::endl;
-    std::cout << "11_2: " << nextValidPass(r) << std::endl;
+    std::cout << "11_1: " << Aoc15::solveD11P1(in.front()) << std::endl;
+    std::cout << "11_2: " << Aoc15::solveD11P2(in.front()) << std::endl;
 }
 
 void solve12(const std::vector<std::string> &in)
 {
-    std::cout << "12_1: " << sumNumbersInJson(in.at(0)) << std::endl;
-    std::cout << "12_2: " << sumNumbersInJson2(in.at(0)) << std::endl;
+    std::cout << "12_1: " << Aoc15::solveD12P1(in.front()) << std::endl;
+    std::cout << "12_2: " << Aoc15::solveD12P2(in.front()) << std::endl;
 }
 
 void solve13(const std::vector<std::string> &in)
 {
-    auto m = createPeopleHappinessMap(in);
-    std::cout << "13_1: " << optimalHappiness(m) << std::endl;
-
-    std::set<std::string> s;
-    for (const auto &kv : m) {
-        s.insert(kv.first.first);
-    }
-    const std::string me{"XXX"};
-    for (const auto &v : s) {
-        m.emplace(Key{v, me}, 0);
-        m.emplace(Key{me, v}, 0);
-    }
-    std::cout << "13_2: " << optimalHappiness(m) << std::endl;
+    std::cout << "13_1: " << Aoc15::solveD13P1(in) << std::endl;
+    std::cout << "13_2: " << Aoc15::solveD13P2(in) << std::endl;
 }
 
 void solve14(const std::vector<std::string> &in)
 {
-    auto v = createReindeers(in);
-    constexpr auto time{2503U};
-    std::cout << "14_1: " << winningDistance(v, time) << std::endl;
-    std::cout << "14_2: " << winningPoints(v, time) << std::endl;
+    std::cout << "14_1: " << Aoc15::solveD14P1(in) << std::endl;
+    std::cout << "14_2: " << Aoc15::solveD14P2(in) << std::endl;
 }
 
 void solve15(const std::vector<std::string> &in)
 {
-    constexpr auto targetCalories{500U};
-    auto v = createIngredients(in);
-    std::cout << "15_1: " <<  highestScoringCookie(v) << std::endl;
-    std::cout << "15_2: " <<  highestScoringCookie(v, targetCalories) << std::endl;
+    std::cout << "15_1: " <<  Aoc15::solveD15P1(in) << std::endl;
+    std::cout << "15_2: " <<  Aoc15::solveD15P2(in) << std::endl;
 }
 
 void solve16(const std::vector<std::string> &in)
 {
-    // Here we return index in vector so we need to increment the result.
-    auto samples{createMfcsamCompoundsSamples(in)};
-    std::cout << "16_1: " << auntNumber(sample, samples) + 1 << "\n";
-
-    std::cout << "16_2: " << auntNumber(sample2, samples) + 1 << "\n";
+    std::cout << "16_1: " <<  Aoc15::solveD16P1(in) << std::endl;
+    std::cout << "16_2: " <<  Aoc15::solveD16P2(in) << std::endl;
 }
 
 void solve17(const std::vector<std::string> &in)
 {
-    constexpr auto topSum{150U};
-    std::cout << "17_1: " << combinationsToTopSum(in, topSum) << "\n";
-    std::cout << "17_2: " << combinationsWithMinToTopSum(in, topSum) << "\n";
+    std::cout << "17_1: " <<  Aoc15::solveD17P1(in) << std::endl;
+    std::cout << "17_2: " <<  Aoc15::solveD17P2(in) << std::endl;
 }

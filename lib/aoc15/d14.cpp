@@ -3,6 +3,8 @@
 #include <regex>
 #include <unordered_map>
 
+namespace Aoc15
+{
 Reindeer::Reindeer(std::string name, std::uint64_t speed, std::uint64_t moveTime, std::uint64_t restTime) :
     m_name{std::move(name)}, m_speed{speed}, m_moveTime{moveTime}, m_restTime{restTime}
 {}
@@ -38,6 +40,20 @@ auto operator==(const Reindeer &l, const Reindeer &r) -> bool
 auto operator!=(const Reindeer &l, const Reindeer &r) -> bool
 {
     return !(l == r);
+}
+
+auto solveD14P1(const std::vector<std::string>& in) -> std::int64_t
+{
+    auto v = createReindeers(in);
+    constexpr auto time{2503U};
+    return winningDistance(v, time);
+}
+
+auto solveD14P2(const std::vector<std::string>& in) -> std::int64_t
+{
+    auto v = createReindeers(in);
+    constexpr auto time{2503U};
+    return winningPoints(v, time);
 }
 
 auto createReindeers(const std::vector<std::string> &v) -> std::vector<Reindeer>
@@ -98,3 +114,4 @@ auto winningPoints(const std::vector<Reindeer> &v, std::uint64_t s) -> std::uint
 
     return (*std::max_element(reindeersPoints.begin(), reindeersPoints.end(), [](const auto &l, const auto &r) { return l.second < r.second; })).second;
 }
+} // namespace Aoc15

@@ -1,11 +1,20 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
+#include <string>
+#include <vector>
 
-using uint = std::uint32_t;
+namespace Aoc15
+{
+auto solveD2P1(const std::vector<std::string> &in) -> std::uint32_t;
 
-auto paperForGift(uint x, uint y, uint z) -> uint;
+auto solveD2P2(const std::vector<std::string> &in) -> std::uint32_t;
 
-auto areaOfSmallest(uint x, uint y, uint z) -> uint;
+auto solveD2(const std::vector<std::string> &in, std::function<std::uint32_t(std::uint32_t, std::uint32_t, std::uint32_t)> fun) -> std::uint32_t;
 
-auto ribbonForGift(uint x, uint y, uint z) -> uint;
+auto paperForGift(std::uint32_t x, std::uint32_t y, std::uint32_t z) -> std::uint32_t;
+
+auto ribbonForGift(std::uint32_t x, std::uint32_t y, std::uint32_t z) -> std::uint32_t;
+}
+

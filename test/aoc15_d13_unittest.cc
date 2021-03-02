@@ -19,7 +19,7 @@ const std::vector<std::string> vec
 
 TEST(Day13_Part1_Test, createPeopleHappinessMap)
 {
-    auto res = createPeopleHappinessMap(vec);
+    auto res = Aoc15::createPeopleHappinessMap(vec);
     ASSERT_EQ(res.count({"Alice", "Bob"}), 1);
     ASSERT_EQ(res.count({"Bob", "Alice"}), 1);
     ASSERT_EQ(res.count({"Alice", "Carol"}), 1);
@@ -33,6 +33,6 @@ TEST(Day13_Part1_Test, createPeopleHappinessMap)
 
 TEST(Day13_Part1_Test, optimalHappiness)
 {
-    auto res = createPeopleHappinessMap(vec);
+    auto res = Aoc15::createPeopleHappinessMap(vec);
     EXPECT_EQ(optimalHappiness(res), 330);
 }

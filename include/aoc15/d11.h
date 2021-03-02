@@ -1,13 +1,20 @@
 #pragma once
 
-#include <string>
+#include <string_view>
 
-auto containsIncreasingStraightOf3Letters(const std::string &in) -> bool;
+namespace Aoc15
+{
+auto solveD11P1(std::string_view in) -> std::string;
 
-auto doesntContainsLetters(const std::string &in) -> bool;
+auto solveD11P2(std::string_view in) -> std::string;
 
-auto containsLetterPairs(const std::string &in) -> bool;
+auto containsIncreasingStraightOf3Letters(std::string_view in) -> bool;
 
-auto nextPass(const std::string &in) -> std::string;
+auto doesntContainsLetters(std::string_view in) -> bool;
 
-auto nextValidPass(const std::string &in) -> std::string;
+auto containsLetterPairs(std::string_view in) -> bool;
+
+auto nextPass(std::string_view in) -> std::string;
+
+auto nextValidPass(std::string_view in) -> std::string;
+}

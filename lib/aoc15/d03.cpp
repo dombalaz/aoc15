@@ -4,7 +4,7 @@
 #include <utility>
 #include <vector>
 
-auto visitedHousesBySanta(const std::string &in) -> uint
+auto Aoc15::solveD3P1(std::string_view in) -> std::uint32_t
 {
     std::set<std::pair<int, int>> grid{{0, 0}};
     int x{0};
@@ -29,7 +29,7 @@ auto visitedHousesBySanta(const std::string &in) -> uint
     return grid.size();
 }
 
-auto visitedHousesBySantaAndRobot(const std::string &in) -> uint
+auto Aoc15::solveD3P2(std::string_view in) -> std::uint32_t
 {
     std::set<std::pair<int, int>> grid{{0, 0}};
     std::vector<std::pair<int, int>> cs{{0, 0}, {0, 0}};

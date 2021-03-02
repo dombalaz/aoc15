@@ -3,7 +3,7 @@
 
 TEST(Day02_Task01_Test, SignalOnWire)
 {
-    Circuit c = {
+    Aoc15::Circuit c = {
         {"x", "123"},
         {"y", "456"},
         {"d", "x AND y"},
@@ -16,14 +16,14 @@ TEST(Day02_Task01_Test, SignalOnWire)
         {"k", "123 AND y"}
     };
 
-    EXPECT_EQ(signalOnWire("x", c), 123);
-    EXPECT_EQ(signalOnWire("y", c), 456);
-    EXPECT_EQ(signalOnWire("d", c), 72);
-    EXPECT_EQ(signalOnWire("e", c), 507);
-    EXPECT_EQ(signalOnWire("f", c), 492);
-    EXPECT_EQ(signalOnWire("g", c), 114);
-    EXPECT_EQ(signalOnWire("h", c), 65412);
-    EXPECT_EQ(signalOnWire("i", c), 65079);
-    EXPECT_EQ(signalOnWire("j", c), signalOnWire("i", c));
-    EXPECT_EQ(signalOnWire("k", c), 72);
+    EXPECT_EQ(Aoc15::signalOnWire("x", c), 123);
+    EXPECT_EQ(Aoc15::signalOnWire("y", c), 456);
+    EXPECT_EQ(Aoc15::signalOnWire("d", c), 72);
+    EXPECT_EQ(Aoc15::signalOnWire("e", c), 507);
+    EXPECT_EQ(Aoc15::signalOnWire("f", c), 492);
+    EXPECT_EQ(Aoc15::signalOnWire("g", c), 114);
+    EXPECT_EQ(Aoc15::signalOnWire("h", c), 65412);
+    EXPECT_EQ(Aoc15::signalOnWire("i", c), 65079);
+    EXPECT_EQ(Aoc15::signalOnWire("j", c), Aoc15::signalOnWire("i", c));
+    EXPECT_EQ(Aoc15::signalOnWire("k", c), 72);
 }

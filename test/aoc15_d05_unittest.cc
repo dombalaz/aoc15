@@ -3,78 +3,78 @@
 
 TEST(Day05_Task01_Test, ContainsAtLeast3Vowels)
 {
-    EXPECT_TRUE(containsAtLeast3Vowels("aei"));
-    EXPECT_TRUE(containsAtLeast3Vowels("aaa"));
-    EXPECT_TRUE(containsAtLeast3Vowels("xazegov"));
-    EXPECT_TRUE(containsAtLeast3Vowels("aeiouaeiouaeiou"));
+    EXPECT_TRUE(Aoc15::containsAtLeast3Vowels("aei"));
+    EXPECT_TRUE(Aoc15::containsAtLeast3Vowels("aaa"));
+    EXPECT_TRUE(Aoc15::containsAtLeast3Vowels("xazegov"));
+    EXPECT_TRUE(Aoc15::containsAtLeast3Vowels("aeiouaeiouaeiou"));
 
-    EXPECT_FALSE(containsAtLeast3Vowels(""));
-    EXPECT_FALSE(containsAtLeast3Vowels("x"));
-    EXPECT_FALSE(containsAtLeast3Vowels("aa"));
-    EXPECT_FALSE(containsAtLeast3Vowels("xxaexx"));
+    EXPECT_FALSE(Aoc15::containsAtLeast3Vowels(""));
+    EXPECT_FALSE(Aoc15::containsAtLeast3Vowels("x"));
+    EXPECT_FALSE(Aoc15::containsAtLeast3Vowels("aa"));
+    EXPECT_FALSE(Aoc15::containsAtLeast3Vowels("xxaexx"));
 }
 
 TEST(Day05_Task01_Test, ContainsOneLetterTwiceInRow)
 {
-    EXPECT_TRUE(containsOneLetterTwiceInRow("xx"));
-    EXPECT_TRUE(containsOneLetterTwiceInRow("abcdde"));
-    EXPECT_TRUE(containsOneLetterTwiceInRow("aabbccdd"));
+    EXPECT_TRUE(Aoc15::containsOneLetterTwiceInRow("xx"));
+    EXPECT_TRUE(Aoc15::containsOneLetterTwiceInRow("abcdde"));
+    EXPECT_TRUE(Aoc15::containsOneLetterTwiceInRow("aabbccdd"));
 
-    EXPECT_FALSE(containsOneLetterTwiceInRow(""));
-    EXPECT_FALSE(containsOneLetterTwiceInRow("x"));
-    EXPECT_FALSE(containsOneLetterTwiceInRow("abcde"));
+    EXPECT_FALSE(Aoc15::containsOneLetterTwiceInRow(""));
+    EXPECT_FALSE(Aoc15::containsOneLetterTwiceInRow("x"));
+    EXPECT_FALSE(Aoc15::containsOneLetterTwiceInRow("abcde"));
 }
 
 TEST(Day05_Task01_Test, DoesntContainsTheStrings)
 {
-    EXPECT_TRUE(doesntContainsTheStrings(""));
-    EXPECT_TRUE(doesntContainsTheStrings("ace"));
+    EXPECT_TRUE(Aoc15::doesntContainsTheStrings(""));
+    EXPECT_TRUE(Aoc15::doesntContainsTheStrings("ace"));
 
-    EXPECT_FALSE(doesntContainsTheStrings("ab"));
-    EXPECT_FALSE(doesntContainsTheStrings("cd"));
-    EXPECT_FALSE(doesntContainsTheStrings("pq"));
-    EXPECT_FALSE(doesntContainsTheStrings("xy"));
-    EXPECT_FALSE(doesntContainsTheStrings("xxxxxabxxxx"));
+    EXPECT_FALSE(Aoc15::doesntContainsTheStrings("ab"));
+    EXPECT_FALSE(Aoc15::doesntContainsTheStrings("cd"));
+    EXPECT_FALSE(Aoc15::doesntContainsTheStrings("pq"));
+    EXPECT_FALSE(Aoc15::doesntContainsTheStrings("xy"));
+    EXPECT_FALSE(Aoc15::doesntContainsTheStrings("xxxxxabxxxx"));
 }
 
 TEST(Dayo05_Task01_Test, IsNice)
 {
-    EXPECT_TRUE(isNice("ugknbfddgicrmopn"));
-    EXPECT_TRUE(isNice("aaa"));
+    EXPECT_TRUE(Aoc15::isNice("ugknbfddgicrmopn"));
+    EXPECT_TRUE(Aoc15::isNice("aaa"));
 
-    EXPECT_FALSE(isNice("jchzalrnumimnmhp"));
-    EXPECT_FALSE(isNice("haegwjzuvuyypxyu"));
-    EXPECT_FALSE(isNice("dvszwmarrgswjxmb"));
+    EXPECT_FALSE(Aoc15::isNice("jchzalrnumimnmhp"));
+    EXPECT_FALSE(Aoc15::isNice("haegwjzuvuyypxyu"));
+    EXPECT_FALSE(Aoc15::isNice("dvszwmarrgswjxmb"));
 }
 
 TEST(Day05_Task02_Test, twoPairsOfTwoLetters)
 {
-    EXPECT_TRUE(twoPairsOfTwoLetters("xyxy"));
-    EXPECT_TRUE(twoPairsOfTwoLetters("aabcdefgaa"));
-    EXPECT_TRUE(twoPairsOfTwoLetters("qjhvhtzxzqqjkmpb"));
-    EXPECT_TRUE(twoPairsOfTwoLetters("uurcxstgmygtbstg"));
+    EXPECT_TRUE(Aoc15::twoPairsOfTwoLetters("xyxy"));
+    EXPECT_TRUE(Aoc15::twoPairsOfTwoLetters("aabcdefgaa"));
+    EXPECT_TRUE(Aoc15::twoPairsOfTwoLetters("qjhvhtzxzqqjkmpb"));
+    EXPECT_TRUE(Aoc15::twoPairsOfTwoLetters("uurcxstgmygtbstg"));
 
-    EXPECT_FALSE(twoPairsOfTwoLetters(""));
-    EXPECT_FALSE(twoPairsOfTwoLetters("aaa"));
-    EXPECT_FALSE(twoPairsOfTwoLetters("abcdefgh"));
-    EXPECT_FALSE(twoPairsOfTwoLetters("ieodomkazucvgmuy"));
+    EXPECT_FALSE(Aoc15::twoPairsOfTwoLetters(""));
+    EXPECT_FALSE(Aoc15::twoPairsOfTwoLetters("aaa"));
+    EXPECT_FALSE(Aoc15::twoPairsOfTwoLetters("abcdefgh"));
+    EXPECT_FALSE(Aoc15::twoPairsOfTwoLetters("ieodomkazucvgmuy"));
 }
 
 TEST(Day05_Task02_Test, repeatedLetterWithLetterBetween)
 {
-    EXPECT_TRUE(repeatedLetterWithLetterBetween("xyx"));
-    EXPECT_TRUE(repeatedLetterWithLetterBetween("abcdefeghi"));
-    EXPECT_TRUE(repeatedLetterWithLetterBetween("aaa"));
+    EXPECT_TRUE(Aoc15::repeatedLetterWithLetterBetween("xyx"));
+    EXPECT_TRUE(Aoc15::repeatedLetterWithLetterBetween("abcdefeghi"));
+    EXPECT_TRUE(Aoc15::repeatedLetterWithLetterBetween("aaa"));
 
-    EXPECT_FALSE(repeatedLetterWithLetterBetween(""));
-    EXPECT_FALSE(repeatedLetterWithLetterBetween("uurcxstgmygtbstg"));
+    EXPECT_FALSE(Aoc15::repeatedLetterWithLetterBetween(""));
+    EXPECT_FALSE(Aoc15::repeatedLetterWithLetterBetween("uurcxstgmygtbstg"));
 }
 
 TEST(Day05_Task02_Test, isNice2)
 {
-    EXPECT_TRUE(isNice2("qjhvhtzxzqqjkmpb"));
-    EXPECT_TRUE(isNice2("xxyxx"));
+    EXPECT_TRUE(Aoc15::isNice2("qjhvhtzxzqqjkmpb"));
+    EXPECT_TRUE(Aoc15::isNice2("xxyxx"));
 
-    EXPECT_FALSE(isNice2("uurcxstgmygtbstg"));
-    EXPECT_FALSE(isNice2("ieodomkazucvgmuy"));
+    EXPECT_FALSE(Aoc15::isNice2("uurcxstgmygtbstg"));
+    EXPECT_FALSE(Aoc15::isNice2("ieodomkazucvgmuy"));
 }

@@ -4,15 +4,20 @@
 #include <string>
 #include <vector>
 
-using uint = std::uint32_t;
+namespace Aoc15
+{
+auto solveD17P1(const std::vector<std::string>& in) -> std::int64_t;
 
-auto combinationsToTopSum(const std::vector<std::string> &nums, uint sum) -> uint;
+auto solveD17P2(const std::vector<std::string>& in) -> std::int64_t;
+
+auto combinationsToTopSum(const std::vector<std::string> &nums, std::uint32_t sum) -> std::uint32_t;
 
 /*
  * This expects sorted array.
  */
-auto combinationsToTopSum(const std::vector<uint> &nums, uint sum, uint counter) -> uint;
+auto combinationsToTopSum(const std::vector<std::uint32_t> &nums, std::uint32_t sum, std::uint32_t counter) -> std::uint32_t;
 
-auto combinationsWithMinToTopSum(const std::vector<std::string> &nums, uint sum) -> uint;
+auto combinationsWithMinToTopSum(const std::vector<std::string> &nums, std::uint32_t sum) -> std::uint32_t;
 
-auto combinationsWithMinToTopSum(const std::vector<uint> &nums, uint sum) -> uint;
+auto combinationsWithMinToTopSum(const std::vector<std::uint32_t> &nums, std::uint32_t sum) -> std::uint32_t;
+} // namespace Aoc15

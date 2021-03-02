@@ -1,13 +1,12 @@
 #pragma once
 
-#include <string>
+#include <cstdint>
+#include <string_view>
 
-#include <nlohmann/json_fwd.hpp>
+namespace Aoc15
+{
+auto solveD12P1(std::string_view in) -> std::uint64_t;
 
-auto sumNumbersInJson(const std::string &in) -> std::uint64_t;
+auto solveD12P2(std::string_view in) -> std::uint64_t;
+}
 
-auto sumNumbersInJson(const nlohmann::json &in) -> std::uint64_t;
-
-auto sumNumbersInJson2(const std::string &in) -> std::uint64_t;
-
-auto sumNumbersInJson2(const nlohmann::json &in) -> std::uint64_t;

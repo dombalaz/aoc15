@@ -3,7 +3,7 @@
 
 TEST(Day15_Part1_Test, createIngredient)
 {
-    auto r = createIngredient("Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8");
+    auto r = Aoc15::createIngredient("Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8");
     EXPECT_EQ(r.first, "Butterscotch");
     auto &s = r.second;
     EXPECT_EQ(s.capacity, -1);
@@ -15,7 +15,7 @@ TEST(Day15_Part1_Test, createIngredient)
 
 TEST(Day15_Part1_Test, createIngredients)
 {
-    auto v = createIngredients({
+    auto v = Aoc15::createIngredients({
         "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
         "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"
     });
@@ -42,18 +42,18 @@ TEST(Day15_Part1_Test, createIngredients)
 
 TEST(Day15_Part1_Test, highestScoringCookie)
 {
-    auto v = createIngredients({
+    auto v = Aoc15::createIngredients({
         "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
         "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"
     });
-    EXPECT_EQ(highestScoringCookie(v), 62842880U);
+    EXPECT_EQ(Aoc15::highestScoringCookie(v), 62842880U);
 }
 
 TEST(Day15_Part1_Test, highestScoringCookieWithExactCalories)
 {
-    auto v = createIngredients({
+    auto v = Aoc15::createIngredients({
         "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
         "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"
     });
-    EXPECT_EQ(highestScoringCookie(v, 500), 57600000);
+    EXPECT_EQ(Aoc15::highestScoringCookie(v, 500), 57600000);
 }

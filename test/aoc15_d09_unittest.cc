@@ -8,7 +8,7 @@ TEST(Day09_Part1_Test, ShortestDistance)
         "London to Belfast = 518",
         "Dublin to Belfast = 141"
     };
-    EXPECT_EQ(shortestDistance(v), 605);
+    EXPECT_EQ(Aoc15::solveD9P1(v), 605);
 }
 
 TEST(Day09_Part2_Test, LongestDistance)
@@ -18,5 +18,5 @@ TEST(Day09_Part2_Test, LongestDistance)
         "London to Belfast = 518",
         "Dublin to Belfast = 141"
     };
-    EXPECT_EQ(longestDistance(v), 982);
+    EXPECT_EQ(Aoc15::solveD9P2(v), 982);
 }

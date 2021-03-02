@@ -1,6 +1,6 @@
 #include <aoc15/d09.h>
 
-#include <iostream>
+#include <limits>
 #include <regex>
 #include <set>
 
@@ -8,11 +8,11 @@ const std::regex regex{"([a-zA-Z]+) to ([a-zA-Z]+) = ([0-9]+)"};
 
 std::map<std::pair<std::string, std::string>, size_t> distances;
 
-auto shortestDistance(const std::vector<std::string> &v) -> size_t
+auto Aoc15::solveD9P1(const std::vector<std::string> &in) -> size_t
 {
     std::set<std::string> set;
     std::smatch match;
-    for (const auto &s : v) {
+    for (const auto &s : in) {
         std::regex_match(s, match, regex);
         set.insert(match[1]);
         set.insert(match[2]);
@@ -35,11 +35,11 @@ auto shortestDistance(const std::vector<std::string> &v) -> size_t
     return res;
 }
 
-auto longestDistance(const std::vector<std::string> &v) -> size_t
+auto Aoc15::solveD9P2(const std::vector<std::string> &in) -> size_t
 {
     std::set<std::string> set;
     std::smatch match;
-    for (const auto &s : v) {
+    for (const auto &s : in) {
         std::regex_match(s, match, regex);
         set.insert(match[1]);
         set.insert(match[2]);

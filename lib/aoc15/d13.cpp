@@ -3,12 +3,35 @@
 #include <regex>
 #include <set>
 
-auto KeyHash::operator()(const Key &k) const -> std::size_t
+auto Aoc15::solveD13P1(const std::vector<std::string>& in) -> std::int64_t
+{
+    auto m = createPeopleHappinessMap(in);
+    return optimalHappiness(m);
+}
+
+auto Aoc15::solveD13P2(const std::vector<std::string>& in) -> std::int64_t
+{
+
+    auto m = createPeopleHappinessMap(in);
+
+    std::set<std::string> s;
+    for (const auto &kv : m) {
+        s.insert(kv.first.first);
+    }
+    const std::string me{"XXX"};
+    for (const auto &v : s) {
+        m.emplace(Key{v, me}, 0);
+        m.emplace(Key{me, v}, 0);
+    }
+    return optimalHappiness(m);
+}
+
+auto Aoc15::KeyHash::operator()(const Key &k) const -> std::size_t
 {
     return std::hash<std::string>{}(k.first) ^ (std::hash<std::string>{}(k.second) << 1);
 }
 
-auto createPeopleHappinessMap(const std::vector<std::string> &v) -> PeopleHappinessMap
+auto Aoc15::createPeopleHappinessMap(const std::vector<std::string> &v) -> Aoc15::PeopleHappinessMap
 {
     const std::regex regex{"([a-zA-Z]+) would (gain|lose) ([0-9]+) happiness units by sitting next to ([a-zA-z]+)\\."};
     std::smatch match;
@@ -22,7 +45,7 @@ auto createPeopleHappinessMap(const std::vector<std::string> &v) -> PeopleHappin
     return r;
 }
 
-auto optimalHappiness(const PeopleHappinessMap &m) -> std::int64_t
+auto Aoc15::optimalHappiness(const Aoc15::PeopleHappinessMap &m) -> std::int64_t
 {
     std::set<std::string> s;
     for (const auto &kv : m) {

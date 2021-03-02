@@ -3,10 +3,10 @@
 
 TEST(Day10_Part1_Test, LookAndSay)
 {
-    EXPECT_EQ(lookAndSay(""), "");
-    EXPECT_EQ(lookAndSay("1"), "11");
-    EXPECT_EQ(lookAndSay("11"), "21");
-    EXPECT_EQ(lookAndSay("21"), "1211");
-    EXPECT_EQ(lookAndSay("1211"), "111221");
-    EXPECT_EQ(lookAndSay("111221"), "312211");
+    EXPECT_EQ(Aoc15::lookAndSay(""), "");
+    EXPECT_EQ(Aoc15::lookAndSay("1"), "11");
+    EXPECT_EQ(Aoc15::lookAndSay("11"), "21");
+    EXPECT_EQ(Aoc15::lookAndSay("21"), "1211");
+    EXPECT_EQ(Aoc15::lookAndSay("1211"), "111221");
+    EXPECT_EQ(Aoc15::lookAndSay("111221"), "312211");
 }

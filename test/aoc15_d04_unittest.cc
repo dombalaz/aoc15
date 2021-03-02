@@ -3,6 +3,6 @@
 
 TEST(Day04_Task01_Test, CorrectMiningNumber)
 {
-    EXPECT_EQ(609043, miningNumber("abcdef", 5));
-    EXPECT_EQ(1048970, miningNumber("pqrstuv", 5));
+    EXPECT_EQ(609043, Aoc15::solveD4P1("abcdef"));
+    EXPECT_EQ(1048970, Aoc15::solveD4P1("pqrstuv"));
 }

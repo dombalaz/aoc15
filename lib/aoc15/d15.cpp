@@ -1,10 +1,25 @@
 #include <aoc15/d15.h>
 
+#include <cstdint>
 #include <iostream>
 #include <numeric>
 #include <regex>
 
-auto allCombinationsForTop(uint top, uint n) -> std::vector<std::vector<uint>>
+namespace Aoc15 {
+auto solveD15P1(const std::vector<std::string>& in) -> std::int64_t
+{
+    auto v = createIngredients(in);
+    return  highestScoringCookie(v);
+}
+
+auto solveD15P2(const std::vector<std::string>& in) -> std::int64_t
+{
+    constexpr auto targetCalories{500U};
+    auto v = createIngredients(in);
+    return highestScoringCookie(v, targetCalories);
+}
+
+auto allCombinationsForTop(std::uint32_t top, std::uint32_t n) -> std::vector<std::vector<std::uint32_t>>
 {
     if (n == 0) {
         return {};
@@ -13,7 +28,7 @@ auto allCombinationsForTop(uint top, uint n) -> std::vector<std::vector<uint>>
         return {{top}};
     }
 
-    std::vector<std::vector<uint>> r;
+    std::vector<std::vector<std::uint32_t>> r;
     for (auto i{0U}; i <= top; ++i) {
         auto tmp = allCombinationsForTop(top - i, n - 1);
         for (auto &p : tmp) {
@@ -61,7 +76,7 @@ auto createIngredients(const std::vector<std::string> &v) -> std::vector<Ingredi
     return r;
 }
 
-auto highestScoringCookie(const std::vector<Ingredient> &v, uint targetCalories) -> uint
+auto highestScoringCookie(const std::vector<Ingredient> &v, std::uint32_t targetCalories) -> std::uint32_t
 {
     constexpr auto topValue{100U};
     auto c = allCombinationsForTop(topValue, v.size());
@@ -97,3 +112,4 @@ auto highestScoringCookie(const std::vector<Ingredient> &v, uint targetCalories)
     }
     return max;
 }
+} // namespace Aoc15
