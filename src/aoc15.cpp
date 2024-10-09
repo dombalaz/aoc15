@@ -5,8 +5,6 @@
 #include "aoc15/d15.h"
 #include <fstream>
 #include <iostream>
-#include <regex>
-#include <set>
 #include <vector>
 
 #include <aoc15/aoc15.h>
@@ -45,6 +43,8 @@ void solve16(const std::vector<std::string> &in);
 
 void solve17(const std::vector<std::string> &in);
 
+void solve18(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -62,7 +62,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve14,
     solve15,
     solve16,
-    solve17
+    solve17,
+    solve18
 };
 
 auto main(int argc, char **argv) -> int
@@ -206,4 +207,10 @@ void solve17(const std::vector<std::string> &in)
 {
     std::cout << "17_1: " <<  Aoc15::solveD17P1(in) << std::endl;
     std::cout << "17_2: " <<  Aoc15::solveD17P2(in) << std::endl;
+}
+
+void solve18(const std::vector<std::string> &in)
+{
+    std::cout << "18_1: " <<  Aoc15::solveD18P1(in) << std::endl;
+    std::cout << "18_2: " <<  Aoc15::solveD18P2(in) << std::endl;
 }

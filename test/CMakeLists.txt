@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.2)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_REQUIRED True)
 set(TARGETS
     aoc15_d01_unittest
@@ -20,6 +20,7 @@ set(TARGETS
     aoc15_d15_unittest
     aoc15_d16_unittest
     aoc15_d17_unittest
+    aoc15_d18_unittest
 )
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
