@@ -45,6 +45,8 @@ void solve17(const std::vector<std::string> &in);
 
 void solve18(const std::vector<std::string> &in);
 
+void solve19(const std::vector<std::string> &in);
+
 const static std::vector<std::function<void(std::vector<std::string>)>> Functions{
     solve1,
     solve2,
@@ -63,7 +65,8 @@ const static std::vector<std::function<void(std::vector<std::string>)>> Function
     solve15,
     solve16,
     solve17,
-    solve18
+    solve18,
+    solve19
 };
 
 auto main(int argc, char **argv) -> int
@@ -213,4 +216,10 @@ void solve18(const std::vector<std::string> &in)
 {
     std::cout << "18_1: " <<  Aoc15::solveD18P1(in) << std::endl;
     std::cout << "18_2: " <<  Aoc15::solveD18P2(in) << std::endl;
+}
+
+void solve19(const std::vector<std::string> &in)
+{
+    std::cout << "19_1: " <<  Aoc15::solveD19P1(in) << std::endl;
+    std::cout << "19_2: " <<  Aoc15::solveD19P2(in) << std::endl;
 }

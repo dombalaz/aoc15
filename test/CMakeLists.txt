@@ -21,6 +21,7 @@ set(TARGETS
     aoc15_d16_unittest
     aoc15_d17_unittest
     aoc15_d18_unittest
+    aoc15_d19_unittest
 )
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
